@@ -51,7 +51,7 @@ export const MobileNav: FunctionComponent = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   return (
-    <MobileNavStyles key="home">
+    <MobileNavStyles>
       <div
         className="nothing"
         onClick={() => dispatch(setIsNavOpen(false))}

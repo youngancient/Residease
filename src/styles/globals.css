@@ -8,10 +8,15 @@
 
 a{
     text-decoration : none;
+    background-size: cover;
 }
 
 button{
     outline: none;
     border: none;
     cursor: pointer;
+}
+input{
+    border: none;
+    outline: none;
 }
