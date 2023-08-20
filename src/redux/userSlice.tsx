@@ -2,14 +2,15 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { IUser } from "../../types/User"
 import { RootState } from "./store";
-import { Jude } from "../../Constants/User";
+import { Jude } from "../../constants/User";
+
 
 export interface InitialState{
     user : IUser | null;
 }
 
 const initialState : InitialState ={
-    user :null,
+    user : null,
 }
 
 export const userSlice = createSlice({

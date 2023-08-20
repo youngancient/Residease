@@ -81,6 +81,9 @@ export const DashboardNavStyles = styled(HeaderStyles)`
     height: 3.75rem;
     background: #d9d9d9;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .dashboard-btns {
     display: flex;

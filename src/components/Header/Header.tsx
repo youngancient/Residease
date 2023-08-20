@@ -2,11 +2,15 @@ import { FunctionComponent } from "react";
 
 import { MobileNavStyles } from "@/styles/ComponentStyles/mobileNavStyles";
 import Link from "next/link";
-import { Menu } from "../Icons/HeaderIcons";
+import { CloseIcon, Menu } from "../Icons/HeaderIcons";
 import { useRouter } from "next/router";
-import { useAppSelector } from "@/redux/hooks/hook";
-import { dataSelector } from "@/redux/dataSlice";
-import { HeaderStyles, PageLinkStyles } from "@/styles/ComponentStyles/HeaderStyles";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks/hook";
+import { dataSelector, setIsNavOpen } from "@/redux/dataSlice";
+import {
+  HeaderStyles,
+  PageLinkStyles,
+} from "@/styles/ComponentStyles/HeaderStyles";
+import { motion, AnimatePresence } from "framer-motion";
 
 export interface ILink {
   name: string;
@@ -38,16 +42,37 @@ export const Header: FunctionComponent = () => {
         <button type="button">Register here</button>
       </div>
       <Menu />
-      {isNavOpen && <MobileNav />}
+      <AnimatePresence>{isNavOpen && <MobileNav key="hinokami" />}</AnimatePresence>
     </HeaderStyles>
   );
 };
 
 export const MobileNav: FunctionComponent = () => {
-  return <MobileNavStyles>
-    <div className="nothing"></div>
-    <div className="main">
-      
-    </div>
-  </MobileNavStyles>;
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  return (
+    <MobileNavStyles key="home">
+      <div
+        className="nothing"
+        onClick={() => dispatch(setIsNavOpen(false))}
+      ></div>
+      <div className="main">
+        <div className="x">
+          <CloseIcon clickAction={() => dispatch(setIsNavOpen(false))} />
+        </div>
+        <div className="mobile-links">
+          {Links.map((navlink, index) => (
+            <Link href={navlink.href} key={index}>
+              <PageLinkStyles $isActive={router.pathname === navlink.href}>
+                {navlink.name}
+              </PageLinkStyles>
+            </Link>
+          ))}
+        </div>
+        <div className="reg">
+          <button type="button">Register</button>
+        </div>
+      </div>
+    </MobileNavStyles>
+  );
 };

@@ -13,16 +13,18 @@ export interface ILayout {
 const Layout: FunctionComponent<ILayout> = ({ children }) => {
   const { user } = useAppSelector(userSelector);
   const router  = useRouter();
-  // useEffect(()=>{
-  //   if(user){
-  //     router.push('/dashboard');
-  //   }
-  // },[user]);
+  useEffect(()=>{
+    if(user){
+      router.push('/dashboard');
+    }else{
+      router.push('/');
+    }
+  },[user]);
   return (
     <>
       {user === null ? <Header /> : <DashboardNav />}
       <main>{children}</main>
-      {user === null ? <Footer /> : <></>}
+      {user === null && <Footer /> }
     </>
   );
 };

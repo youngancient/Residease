@@ -1,3 +1,4 @@
+import { Hero } from '@/components/Homepage/Homepage';
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -11,7 +12,7 @@ const Home =() => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <p>index page, world wa</p>
+        <Hero />
       </main>
     </>
   )
