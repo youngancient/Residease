@@ -6,6 +6,7 @@ import { PageLinkStyles } from "@/styles/ComponentStyles/HeaderStyles";
 import Link from "next/link";
 import { FunctionComponent, ReactNode } from "react";
 import { FB, Insta, XIcon } from "../Icons/FooterIcon";
+import { LogoIcon } from "../Icons/HeaderIcons";
 
 export const Footer: FunctionComponent = () => {
   return (
@@ -13,7 +14,7 @@ export const Footer: FunctionComponent = () => {
       <div className="y">
         <div className="first">
           <div className="logo">
-            <h2>logo</h2>
+            <LogoIcon />
             <p>
               We make you smile! Entrust your smile to us.We are a kinikan
               kinikan of 5 teams solving a major problem in the Nigeria

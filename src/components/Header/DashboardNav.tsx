@@ -3,6 +3,7 @@ import { ILink } from "./Header";
 import Link from "next/link";
 import {
   CloseIcon,
+  LogoIcon,
   Menu,
   NotificationIcon,
   SearchIcon,
@@ -29,7 +30,7 @@ export const DashboardNav: FunctionComponent = () => {
   const { isNavOpen } = useAppSelector(dataSelector);
   return (
     <DashboardNavStyles>
-      <div className="logo">logo</div>
+      <LogoIcon />
       <div className="desktop-links">
         {Links.map((navlink, index) => (
           <Link href={navlink.href} key={index}>

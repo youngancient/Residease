@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 
 import { MobileNavStyles } from "@/styles/ComponentStyles/mobileNavStyles";
 import Link from "next/link";
-import { CloseIcon, Menu } from "../Icons/HeaderIcons";
+import { CloseIcon, LogoIcon, Menu } from "../Icons/HeaderIcons";
 import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hook";
 import { dataSelector, setIsNavOpen } from "@/redux/dataSlice";
@@ -28,7 +28,7 @@ export const Header: FunctionComponent = () => {
   const { isNavOpen } = useAppSelector(dataSelector);
   return (
     <HeaderStyles>
-      <div className="logo">logo</div>
+      <LogoIcon />
       <div className="desktop-links">
         {Links.map((navlink, index) => (
           <Link href={navlink.href} key={index}>

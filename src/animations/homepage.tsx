@@ -33,3 +33,56 @@ export const slidevariants = {
     },
   },
 };
+
+export const h1Variants = {
+  initial : {
+    x : 10,
+    opacity : 0.3
+  },
+  final : {
+    x : 0,
+    opacity: 1,
+    transition :{
+      duration: 1,
+    }
+  }
+}
+export const secH1Variants = {
+  initial : {
+    x : -10,
+    opacity : 0.3
+  },
+  final : {
+    x : 0,
+    opacity: 1,
+    transition :{
+      duration: 1,
+    }
+  }
+}
+export const heroPVariants = {
+  initial : {
+    y : 40,
+    opacity : 0
+  },
+  final : {
+    y : 0,
+    opacity: 1,
+    transition :{
+      duration: 1,
+    }
+  }
+}
+export const houseVariants = {
+  initial: {
+    opacity: 0.3,
+    scale: 0.9,
+  },
+  final: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+};

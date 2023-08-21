@@ -1,5 +1,5 @@
-import { Hero } from "@/components/Homepage/Homepage";
-import { HeroSection } from "@/styles/PageStyles/SectionStyles";
+import { Hero, ListHouses } from "@/components/Homepage/Homepage";
+import { HeroSection, InnerSection } from "@/styles/PageStyles/SectionStyles";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -19,6 +19,9 @@ const Home = () => {
         <HeroSection>
           <Hero />
         </HeroSection>
+        <InnerSection>
+          <ListHouses />
+        </InnerSection>
       </main>
     </>
   );

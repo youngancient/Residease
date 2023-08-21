@@ -25,9 +25,10 @@ export const MenuStyle = styled.div`
     display: none;
   }
 `;
+
 export const HeaderStyles = styled.header`
   border-bottom: 1px solid rgba(196, 196, 196, 0.6);
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem;
   font-size: 2rem;
   display: flex;
   justify-content: space-between;
@@ -61,6 +62,9 @@ export const HeaderStyles = styled.header`
     }
   }
   @media (max-width: 998px) {
+    .desktop-links {
+      gap: 2rem;
+    }
     .button button {
       width: 10rem;
     }
@@ -109,3 +113,13 @@ export const DashboardNavStyles = styled(HeaderStyles)`
     }
   }
 `;
+
+export const LogoStyles = styled.div`
+  font-size: 1.8rem;
+  color: #004286;
+  font-weight: 600;
+  strong{
+    color: #F2960D;
+    font-weight: 600;
+  }
+`

@@ -1,6 +1,6 @@
 import { dataSelector, setIsNavOpen } from "@/redux/dataSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hook";
-import { MenuStyle } from "@/styles/ComponentStyles/HeaderStyles";
+import { LogoStyles, MenuStyle } from "@/styles/ComponentStyles/HeaderStyles";
 import { FunctionComponent } from "react";
 
 export const Menu: FunctionComponent = () => {
@@ -75,6 +75,11 @@ export const Menu: FunctionComponent = () => {
   );
 };
 
+export const LogoIcon =()=>{
+  return(
+    <LogoStyles>Resid<strong>ease</strong></LogoStyles>
+  )
+}
 export const NotificationIcon = () => {
   return (
     <svg

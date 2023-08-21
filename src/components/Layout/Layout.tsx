@@ -5,6 +5,8 @@ import { useAppSelector } from "@/redux/hooks/hook";
 import { userSelector } from "@/redux/userSlice";
 import { DashboardNav } from "../Header/DashboardNav";
 import { useRouter } from "next/router";
+import { LayoutStyle } from "@/styles/ComponentStyles/Layout";
+import { dataSelector } from "@/redux/dataSlice";
 
 export interface ILayout {
   children: ReactNode;
@@ -12,20 +14,22 @@ export interface ILayout {
 
 const Layout: FunctionComponent<ILayout> = ({ children }) => {
   const { user } = useAppSelector(userSelector);
-  const router  = useRouter();
-  useEffect(()=>{
-    if(user){
-      router.push('/dashboard');
-    }else{
-      router.push('/');
+  const { isNavOpen } = useAppSelector(dataSelector);
+  const router = useRouter();
+  useEffect(() => {
+    if (user) {
+      router.push("/dashboard");
+    } else {
+      router.push("/");
     }
-  },[user]);
+  }, [user])
+  
   return (
-    <>
+    <LayoutStyle $isNavOpen={isNavOpen}>
       {user === null ? <Header /> : <DashboardNav />}
       <main>{children}</main>
-      {user === null && <Footer /> }
-    </>
+      {user === null && <Footer />}
+    </LayoutStyle>
   );
 };
 

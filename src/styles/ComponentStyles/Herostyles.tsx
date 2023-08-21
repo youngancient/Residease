@@ -1,7 +1,6 @@
 import { styled } from "styled-components";
 
 export const HeroStyles = styled.div`
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,7 +88,7 @@ export const SearchStyles = styled.div`
     font-weight: 500;
     line-height: 140%; /* 1.4rem */
     letter-spacing: -0.02rem;
-  //   width: 100%;
+    //   width: 100%;
   }
   input::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -115,14 +114,14 @@ export const SearchStyles = styled.div`
   @media (max-width: 500px) {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap:  1rem;
     width: 80%;
     justify-content: center;
     align-items: center;
-    input{
-        height: 50px;
-        border-radius: 0.9375rem;
-        padding: 0.5rem 0.5rem 0.5rem 1rem;
+    input {
+      height: 50px;
+      border-radius: 0.9375rem;
+      padding: 0.5rem 0.5rem 0.5rem 1rem;
     }
   }
   @media (min-width: 500px) {
@@ -133,7 +132,55 @@ export const SearchStyles = styled.div`
     border-radius: 0.9375rem;
     gap: 1rem;
   }
-  @media (min-width: 998px){
+  @media (min-width: 998px) {
     width: 50%;
   }
 `;
+
+export const ListHousesStyles = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  .one {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  h2 {
+    color: var(--gray-800, #242d35);
+    font-size: 2.625rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 3.4125rem */
+    letter-spacing: 0.0525rem;
+  }
+  .desc {
+    color: var(--primary-color, #000);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 1.4rem */
+    letter-spacing: -0.02rem;
+    width: 55%;
+  }
+  @media (max-width: 998px) {
+    .desc {
+      width: 80%;
+    }
+  }
+  @media (max-width: 767px) {
+    .one {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .desc {
+      width: 100%;
+    }
+    h2 {
+      font-size: 1.8rem;
+    }
+  }
+`;
+
+
