@@ -18,11 +18,38 @@ export const PageLinkStyles = styled.p<IPageLink>`
 `;
 
 export const MenuStyle = styled.div`
-    svg{
-      transition: 1s;
-    }
+  svg {
+    transition: 1s;
+  }
   @media (min-width: 767px) {
     display: none;
+  }
+`;
+
+export const LargeBtnStyles = styled.button`
+  display: flex;
+  width: 14.375rem;
+  height: 4rem;
+  padding: 0.625rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+  border-radius: 0.9375rem;
+  background: var(--primary-color, #000);
+  color: var(--white, #fff);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%; /* 1rem */
+  letter-spacing: 0.02rem;
+
+  @media (max-width: 998px) {
+    width: 10rem;
+  }
+  @media (min-width: 998px) {
+    padding: 1rem 5rem 1rem 5rem;
+    width: 14.375rem;
   }
 `;
 
@@ -36,24 +63,6 @@ export const HeaderStyles = styled.header`
   .desktop-links {
     display: flex;
     gap: 3rem;
-  }
-  .button button {
-    display: flex;
-    width: 14.375rem;
-    height: 4rem;
-    padding: 0.625rem;
-    justify-content: center;
-    align-items: center;
-    gap: 0.625rem;
-    flex-shrink: 0;
-    border-radius: 0.9375rem;
-    background: var(--primary-color, #000);
-    color: var(--white, #fff);
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 100%; /* 1rem */
-    letter-spacing: 0.02rem;
   }
   @media (max-width: 767px) {
     .desktop-links,
@@ -118,8 +127,8 @@ export const LogoStyles = styled.div`
   font-size: 1.8rem;
   color: #004286;
   font-weight: 600;
-  strong{
-    color: #F2960D;
+  strong {
+    color: #f2960d;
     font-weight: 600;
   }
-`
+`;

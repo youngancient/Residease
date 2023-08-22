@@ -19,3 +19,14 @@ export const InnerSection = styled.section`
     padding: 1rem 6rem 1rem 6rem;
   }
 `;
+
+export const MiniSection = styled.section`
+  padding: 2rem;
+  margin-top: 1rem;
+  @media (max-width: 500px) {
+    padding: 1.5rem;
+  }
+  @media (min-width: 998px) {
+    padding: 1rem 6rem 1rem 6rem;
+  }
+`;

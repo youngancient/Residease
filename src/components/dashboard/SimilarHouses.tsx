@@ -1,0 +1,53 @@
+import { dataSelector } from "@/redux/dataSlice";
+import { useAppSelector } from "@/redux/hooks/hook";
+import {
+  SimilarHousesStyles,
+  SlidingListHousesStyles,
+} from "@/styles/ComponentStyles/Dashboard/SimilarHousesStyles";
+import { InnerSection } from "@/styles/PageStyles/SectionStyles";
+import { FunctionComponent } from "react";
+import { IHouse } from "../../../types/House";
+import { IHouseList } from "../HouseCards/HouseList";
+import { HouseCard } from "../HouseCards/HouseCard";
+
+interface ISimilarHouses{
+    id : string;
+}
+export const SimilarHouses:FunctionComponent<ISimilarHouses> = ({id}) => {
+  const { allHouses } = useAppSelector(dataSelector);
+  const houses = allHouses?.slice(0, 5);
+  return (
+    <>
+      {houses && houses !== null && (
+        <InnerSection>
+          <SimilarHousesStyles>
+            <h3>Similar available properties <strong>({houses.length})</strong></h3>
+            <SlidingListHouses houses={houses} />
+          </SimilarHousesStyles>
+        </InnerSection>
+      )}
+    </>
+  );
+};
+
+export const SlidingListHouses: FunctionComponent<IHouseList> = ({
+  houses,
+}) => {
+  return (
+    <SlidingListHousesStyles>
+      {houses !== null &&
+        houses.map((ele, index) => (
+          <HouseCard
+            key={index}
+            name={ele.name}
+            area={ele.area}
+            location={ele.location}
+            id={ele.id}
+            imgSrc={ele.imgSrc}
+            bedroomNumber={ele.bedroomNumber}
+            type={ele.type}
+          />
+        ))}
+    </SlidingListHousesStyles>
+  );
+};

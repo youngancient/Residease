@@ -51,10 +51,10 @@ export const SortIcon = () => {
   );
 };
 
-interface ICancel{
-  handleCancel :()=> void;
+interface ICancel {
+  handleCancel: () => void;
 }
-export const CircleX:FunctionComponent<ICancel> = ({handleCancel}) => {
+export const CircleX: FunctionComponent<ICancel> = ({ handleCancel }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -73,6 +73,23 @@ export const CircleX:FunctionComponent<ICancel> = ({handleCancel}) => {
         clipRule="evenodd"
         d="M12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25ZM2.75 12C2.75 6.89137 6.89137 2.75 12 2.75C17.1086 2.75 21.25 6.89137 21.25 12C21.25 17.1086 17.1086 21.25 12 21.25C6.89137 21.25 2.75 17.1086 2.75 12Z"
         fill="#C4C4C4"
+      />
+    </svg>
+  );
+};
+
+export const BackIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+    >
+      <path
+        d="M13.3337 7.33341H5.22033L8.94699 3.60675L8.00033 2.66675L2.66699 8.00008L8.00033 13.3334L8.94033 12.3934L5.22033 8.66675H13.3337V7.33341Z"
+        fill="#A8B0B9"
       />
     </svg>
   );

@@ -120,9 +120,10 @@ export const SearchIcon = () => {
   );
 };
 
-interface IClick {
+export interface IClick {
   clickAction : ()=> void;
 }
+
 export const CloseIcon:FunctionComponent<IClick> = ({clickAction}) => {
   return (
     <svg
