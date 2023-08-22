@@ -5,6 +5,8 @@ import { FunctionComponent } from "react";
 import { HouseListComp } from "../HouseCards/HouseList";
 import { motion } from "framer-motion";
 import { h1Variants, heroPVariants, secH1Variants } from "@/animations/homepage";
+import { useAppSelector } from "@/redux/hooks/hook";
+import { dataSelector } from "@/redux/dataSlice";
 
 export const Hero = () => {
   return (
@@ -57,6 +59,7 @@ export const SearchComponent = () => {
 };
 
 export const ListHouses = () => {
+  const {allHouses} = useAppSelector(dataSelector);
   return (
     <ListHousesStyles>
       <div className="one">
@@ -67,7 +70,7 @@ export const ListHouses = () => {
         smile to us.
       </p>
       </div>
-      <HouseListComp />
+      <HouseListComp houses={allHouses} />
     </ListHousesStyles>
   );
 };

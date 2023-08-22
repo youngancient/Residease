@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import { IUser } from "../../types/User"
 import { RootState } from "./store";
 import { IHouse } from "../../types/House";
+import { Houses } from "../../constants/Houses";
 
 export interface InitialState{
     allHouses : IHouse[] | null,
@@ -9,7 +10,7 @@ export interface InitialState{
 }
 
 const initialState : InitialState ={
-    allHouses : null,
+    allHouses : Houses,
     isNavOpen : false,
 }
 

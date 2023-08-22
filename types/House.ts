@@ -5,4 +5,5 @@ export interface IHouse{
     location : string;
     area : string;
     imgSrc : string;
+    bedroomNumber : number;
 }
