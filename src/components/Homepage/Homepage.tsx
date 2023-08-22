@@ -1,8 +1,10 @@
 import { HeroStyles, SearchStyles } from "@/styles/ComponentStyles/Herostyles";
 import { SearchIcon } from "../Icons/HeaderIcons";
+import Experience from "./Experience";
 
 export const Hero = () => {
   return (
+    <>
     <HeroStyles>
       <div className="head">
         <h1>“Let’s find a home</h1>
@@ -15,8 +17,12 @@ export const Hero = () => {
           your smile to us.
         </p>
       </div>
+    
       <SearchComponent />
+     
     </HeroStyles>
+    <Experience/>
+    </>
   );
 };
 
