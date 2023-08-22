@@ -47,6 +47,9 @@ export const Header: FunctionComponent = () => {
   );
 };
 
+
+// issue
+// when i click the links on the mobile nav, the slide-in still shows
 export const MobileNav: FunctionComponent = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();

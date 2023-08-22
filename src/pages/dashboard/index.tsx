@@ -1,7 +1,18 @@
+import { useAppSelector } from '@/redux/hooks/hook';
+import { userSelector } from '@/redux/userSlice';
 import Head from 'next/head'
 import Image from 'next/image'
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const Dashboard =() => {
+  const { user } = useAppSelector(userSelector);
+  const router = useRouter();
+  useEffect(() => {
+    if (user === null) {
+      router.push("/");
+    }
+  }, []);
   return (
     <>
       <Head>

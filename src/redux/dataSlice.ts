@@ -6,12 +6,16 @@ import { Houses } from "../../constants/Houses";
 
 export interface InitialState{
     allHouses : IHouse[] | null,
+    filterHouses : IHouse[] | null,
     isNavOpen : boolean;
+    query : string | null;
 }
 
 const initialState : InitialState ={
     allHouses : Houses,
     isNavOpen : false,
+    query : null,
+    filterHouses : Houses,
 }
 
 export const dataSlice = createSlice({
@@ -20,6 +24,12 @@ export const dataSlice = createSlice({
     reducers:{
         setIsNavOpen : (state,{payload})=>{
             state.isNavOpen = payload;
+        },
+        setQuery :(state,{payload}) =>{
+            state.query = payload;
+        },
+        setFilterHouses:(state, {payload})=>{
+            state.filterHouses = payload;
         }
     }
 });
@@ -27,6 +37,6 @@ export const dataSlice = createSlice({
 
 export const dataSelector = (state: RootState) => state.data;
 
-export const {setIsNavOpen} = dataSlice.actions;
+export const {setIsNavOpen, setQuery ,setFilterHouses} = dataSlice.actions;
 
 export default dataSlice.reducer;

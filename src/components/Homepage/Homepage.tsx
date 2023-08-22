@@ -42,6 +42,8 @@ export const Hero = () => {
 };
 
 export const SearchComponent = () => {
+  // work on search function here
+  // this search leads them to the property page
   return (
     <SearchStyles>
       <input
@@ -60,6 +62,7 @@ export const SearchComponent = () => {
 
 export const ListHouses = () => {
   const {allHouses} = useAppSelector(dataSelector);
+  // reduce the number of houses to max 6!
   return (
     <ListHousesStyles>
       <div className="one">

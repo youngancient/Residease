@@ -1,3 +1,4 @@
+import { AllListing } from '@/components/dashboard/AllListing';
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -9,7 +10,7 @@ const Properties =() => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        Properties page here
+        <AllListing />
       </main>
     </>
   )

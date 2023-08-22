@@ -19,6 +19,7 @@ export const HouseListComp: FunctionComponent<IHouseList> = ({ houses }) => {
             id={ele.id}
             imgSrc={ele.imgSrc}
             bedroomNumber={ele.bedroomNumber}
+            type={ele.type}
           />
         ))}
     </HouseListCompStyles>

@@ -2,10 +2,9 @@ import { styled } from "styled-components";
 import { motion } from "framer-motion";
 import { houseVariants } from "@/animations/homepage";
 
-
-export const HouseCardStyles = styled(motion.div).attrs(()=>({
-  variants : houseVariants,
-  initial : "initial",
+export const HouseCardStyles = styled(motion.div).attrs(() => ({
+  variants: houseVariants,
+  initial: "initial",
   whileInView: "final",
   viewport: { once: true },
 }))`
@@ -45,6 +44,21 @@ export const HouseCardStyles = styled(motion.div).attrs(()=>({
     display: flex;
     gap: 0.5rem;
     flex-direction: column;
+  }
+  .headies {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .headies span {
+    color: var(--complimentary, #004286);
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 1.125rem */
+    border-radius: 0.75rem;
+    background: #D3DDE8;
+    padding: 0.3125rem 0.8125rem;
   }
   .x {
     align-items: center;
@@ -107,6 +121,7 @@ export const HouseListCompStyles = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  margin-bottom: 4rem;
   @media (min-width: 500px) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(164px, 100%), 1fr));
