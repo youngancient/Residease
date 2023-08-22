@@ -21,7 +21,7 @@ export const SimilarHouses:FunctionComponent<ISimilarHouses> = ({id}) => {
       {houses && houses !== null && (
         <InnerSection>
           <SimilarHousesStyles>
-            <h3>Similar available properties <strong>({houses.length})</strong></h3>
+            <h3>Similar properties <strong>({houses.length})</strong></h3>
             <SlidingListHouses houses={houses} />
           </SimilarHousesStyles>
         </InnerSection>

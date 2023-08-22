@@ -97,6 +97,9 @@ export const HouseCardStyles = styled(motion.div).attrs(() => ({
       padding: 1.1875rem 1rem;
       font-size: 0.75rem;
     }
+    .headies {
+      gap: 1rem;
+    }
   }
   @media (max-width: 767px) {
     .desktop,
