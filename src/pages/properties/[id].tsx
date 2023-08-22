@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 const HouseDetail = () => {
   const router = useRouter();
-  const id = router.query.id;
+  const id = router.query.id as string;
   useEffect(() => {
     console.log(router.query.id);
   }, []);

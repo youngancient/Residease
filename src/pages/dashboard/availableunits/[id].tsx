@@ -10,7 +10,7 @@ import { useEffect } from "react";
 const HouseDetail = () => {
   const { user } = useAppSelector(userSelector);
   const router = useRouter();
-  const id = router.query.id;
+  const id = router.query.id as string;
   useEffect(() => {
     if (user === null) {
       router.push(`/properties/${router.query.id}`);
