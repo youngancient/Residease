@@ -7,7 +7,7 @@ import { dataSelector } from "@/redux/dataSlice";
 import { Filter, SearchInput, Sort } from "./Filters";
 
 export const AllListing: FunctionComponent = () => {
-  const { allHouses } = useSelector(dataSelector);
+  const { allHouses, filterHouses } = useSelector(dataSelector);
   return (
     <InnerSection>
       <AllListingStyles>
@@ -21,7 +21,7 @@ export const AllListing: FunctionComponent = () => {
             <SearchInput />
           </div>
         </div>
-        <HouseListComp houses={allHouses} />
+        <HouseListComp houses={filterHouses} />
       </AllListingStyles>
     </InnerSection>
   );

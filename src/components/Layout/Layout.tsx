@@ -13,17 +13,9 @@ export interface ILayout {
 }
 
 const Layout: FunctionComponent<ILayout> = ({ children }) => {
-  const { user } = useAppSelector(userSelector);
   const { isNavOpen } = useAppSelector(dataSelector);
   const router = useRouter();
-  useEffect(() => {
-    // I will change this
-    if (user) {
-      router.push("/dashboard");
-    } else {
-      router.push("/");
-    }
-  }, []);
+  const { user } = useAppSelector(userSelector);
   
   return (
     <LayoutStyle $isNavOpen={isNavOpen}>

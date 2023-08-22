@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 
 export const FooterStyles = styled.footer`
   background: #f8f8f8;
+  margin-top: 2rem;
   .head {
     color: var(--text, #111);
     font-size: 0.75rem;
@@ -58,7 +59,11 @@ export const FooterStyles = styled.footer`
     gap: 0.75rem;
     flex-direction: column;
   }
-
+  .footer-links{
+    display : flex;
+    flex-direction: column;
+    gap : 0.5rem;
+  }
   @media (min-width: 500px) {
     .logo,
     .sec {

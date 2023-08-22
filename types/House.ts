@@ -6,4 +6,5 @@ export interface IHouse{
     area : string;
     imgSrc : string;
     bedroomNumber : number;
+    type : 'Rent' | 'Sale';
 }

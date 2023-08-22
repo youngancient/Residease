@@ -10,6 +10,7 @@ export const MobileNavStyles = styled(motion.div).attrs(() => ({
 }))`
   position: absolute;
   display: flex;
+  z-index: 5;
   top: 0;
   left: 0;
   height: 100vh;

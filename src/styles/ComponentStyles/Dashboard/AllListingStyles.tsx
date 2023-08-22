@@ -1,7 +1,6 @@
 import { styled } from "styled-components";
 
 export const AllListingStyles = styled.div`
-  border: 2px solid #000;
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -20,6 +19,7 @@ export const AllListingStyles = styled.div`
   .filter-btns {
     display: flex;
     gap: 0.75rem;
+    align-items: center;
   }
   .one-y {
     display: flex;
@@ -38,17 +38,88 @@ export const AllListingStyles = styled.div`
 `;
 
 export const FilterStyle = styled.div`
-  border: 2px solid #000;
-  display: flex;
-  display: flex;
-  padding: 0.75rem 0.75rem 0.75rem 1.25rem;
-  align-items: center;
-  gap: 0.5rem;
+  button {
+    cursor: pointer;
+    display: flex;
+    padding: 0.75rem 0.75rem 0.75rem 1.25rem;
+    align-items: center;
+    white-space: nowrap;
+    width: fit-content;
+    gap: 0.5rem;
+    border: 2px solid #000;
+    border-radius: 2rem;
+    border: 1px solid var(--gray-200, #eaecee);
+    background: var(--base-background-white, #fff);
+    color: var(--gray-900, #0c1116);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 0.875rem */
+  }
   .dropdown {
     position: absolute;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
 export const SearchInputStyle = styled.div`
-  border: 2px solid #000;
+  border-radius: 2rem;
+  position: relative;
+  border: 1px solid var(--gray-200, #eaecee);
+  padding: 0.75rem 0rem;
+  padding-left: 2rem;
+  padding-right: 2.5rem;
+  background: var(--base-background-white, #fff);
+  width: 100%;
+  input {
+    width: 100%;
+    text-align: center;
+    color: var(--gray-900, #0c1116);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 0.875rem */
+  }
+  input::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--gray-300, #d6dade);
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 170%; /* 1.38125rem */
+    letter-spacing: 0.01625rem;
+  }
+
+  input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: var(--gray-300, #d6dade);
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 170%; /* 1.38125rem */
+    letter-spacing: 0.01625rem;
+  }
+
+  input::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: var(--gray-300, #d6dade);
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 170%; /* 1.38125rem */
+    letter-spacing: 0.01625rem;
+  }
+  .svg-x,
+  .svg-y {
+    position: absolute;
+  }
+  .svg-x {
+    left: 0.75rem;
+    top: 0.9rem;
+  }
+  .svg-y {
+    right: 0.75rem;
+    top: 0.6rem;
+  }
 `;
