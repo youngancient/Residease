@@ -17,12 +17,13 @@ const Layout: FunctionComponent<ILayout> = ({ children }) => {
   const { isNavOpen } = useAppSelector(dataSelector);
   const router = useRouter();
   useEffect(() => {
+    // I will change this
     if (user) {
       router.push("/dashboard");
     } else {
       router.push("/");
     }
-  }, [user])
+  }, []);
   
   return (
     <LayoutStyle $isNavOpen={isNavOpen}>

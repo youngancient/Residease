@@ -3,8 +3,10 @@ import Image from "next/image";
 import { FunctionComponent } from "react";
 import { AreaIcon, BedroomIcon, LocationIcon } from "../Icons/HeroIcons";
 import { IHouse } from "../../../types/House";
+import { useRouter } from "next/router";
 
 export const HouseCard:FunctionComponent<IHouse> = ({name, id, imgSrc, area, location, bedroomNumber}) => {
+  const router = useRouter();
   return (
     <HouseCardStyles>
       <div className="img">
@@ -33,7 +35,7 @@ export const HouseCard:FunctionComponent<IHouse> = ({name, id, imgSrc, area, loc
           <span>{area}</span>
         </div>
       </div>
-      <button type="button">View Listing Details</button>
+      <button type="button" onClick={() => router.push(`/dashboard/availableunits/${id}`)}>View Listing Details</button>
     </HouseCardStyles>
   );
 };

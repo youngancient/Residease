@@ -1,13 +1,28 @@
 import { AllListingStyles } from "@/styles/ComponentStyles/Dashboard/AllListingStyles";
 import { InnerSection } from "@/styles/PageStyles/SectionStyles";
 import { FunctionComponent } from "react";
+import { HouseListComp } from "../HouseCards/HouseList";
+import { useSelector } from "react-redux";
+import { dataSelector } from "@/redux/dataSlice";
+import { Filter, SearchInput, Sort } from "./Filters";
 
-export const AllListing:FunctionComponent =()=>{
-    return(
-        <InnerSection>
-            <AllListingStyles>
-            All listings
-            </AllListingStyles>
-        </InnerSection>
-    )
-}
+export const AllListing: FunctionComponent = () => {
+  const { allHouses } = useSelector(dataSelector);
+  return (
+    <InnerSection>
+      <AllListingStyles>
+        <div className="one-y">
+          <h2>All listings</h2>
+          <div className="filters">
+            <div className="filter-btns">
+              <Filter />
+              <Sort />
+            </div>
+            <SearchInput />
+          </div>
+        </div>
+        <HouseListComp houses={allHouses} />
+      </AllListingStyles>
+    </InnerSection>
+  );
+};
