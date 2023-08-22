@@ -62,7 +62,7 @@ export const HouseCard: FunctionComponent<IHouse> = ({
         <div className="x">
           <AreaIcon />
           <span>{area}</span>
-        </div>
+        </div> 
       </div>
       <button
         type="button"

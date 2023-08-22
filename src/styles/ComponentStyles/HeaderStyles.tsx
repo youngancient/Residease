@@ -43,12 +43,12 @@ export const LargeBtnStyles = styled.button`
   font-weight: 700;
   line-height: 100%; /* 1rem */
   letter-spacing: 0.02rem;
+  whitespace: nowrap;
 
   @media (max-width: 998px) {
     width: 10rem;
   }
   @media (min-width: 998px) {
-    padding: 1rem 5rem 1rem 5rem;
     width: 14.375rem;
   }
 `;
