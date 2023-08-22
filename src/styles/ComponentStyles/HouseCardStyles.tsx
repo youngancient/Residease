@@ -12,6 +12,7 @@ export const HouseCardStyles = styled(motion.div).attrs(() => ({
   border: 1px solid var(--gray-200, #eaecee);
   background: var(--base-background-white, #fff);
   padding: 1.5rem;
+  height: fit-content;
   display: flex;
   gap: 1.5rem;
   flex-direction: column;
@@ -27,6 +28,7 @@ export const HouseCardStyles = styled(motion.div).attrs(() => ({
     font-style: normal;
     font-weight: 600;
     line-height: 150%; /* 1.6875rem */
+    white-space: nowrap;
   }
   p {
     color: var(--gray-600, #4f5b67);
@@ -82,6 +84,7 @@ export const HouseCardStyles = styled(motion.div).attrs(() => ({
     border: 1px solid var(--gray-200, #eaecee);
     background: var(--base-background-white, #fff);
     padding: 1.1875rem 4.75rem;
+    white-space: nowrap;
   }
 
   @media (max-width: 414px) {

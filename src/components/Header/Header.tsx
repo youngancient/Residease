@@ -2,12 +2,13 @@ import { FunctionComponent } from "react";
 
 import { MobileNavStyles } from "@/styles/ComponentStyles/mobileNavStyles";
 import Link from "next/link";
-import { CloseIcon, LogoIcon, Menu } from "../Icons/HeaderIcons";
+import { CloseIcon, IClick, LogoIcon, Menu } from "../Icons/HeaderIcons";
 import { useRouter } from "next/router";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hook";
 import { dataSelector, setIsNavOpen } from "@/redux/dataSlice";
 import {
   HeaderStyles,
+  LargeBtnStyles,
   PageLinkStyles,
 } from "@/styles/ComponentStyles/HeaderStyles";
 import { motion, AnimatePresence } from "framer-motion";
@@ -39,17 +40,32 @@ export const Header: FunctionComponent = () => {
         ))}
       </div>
       <div className="button">
-        <button type="button">Register here</button>
+        <LargeBtn
+          clickAction={() => console.log("clicked")}
+          text="Register here"
+        />
       </div>
       <Menu />
-      <AnimatePresence>{isNavOpen && <MobileNav key="hinokami" />}</AnimatePresence>
+      <AnimatePresence>
+        {isNavOpen && <MobileNav key="hinokami" />}
+      </AnimatePresence>
     </HeaderStyles>
   );
 };
 
+interface ILargeBtn extends IClick {
+  text: string;
+}
+export const LargeBtn: FunctionComponent<ILargeBtn> = ({
+  text,
+  clickAction,
+}) => {
+  return <LargeBtnStyles onClick={clickAction}>{text}</LargeBtnStyles>;
+};
 
 // issue
 // when i click the links on the mobile nav, the slide-in still shows
+
 export const MobileNav: FunctionComponent = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();

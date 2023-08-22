@@ -1,26 +1,20 @@
 import { HouseDetailComp } from "@/components/dashboard/HouseDetails";
 import { SimilarHouses } from "@/components/dashboard/SimilarHouses";
-import { useAppSelector } from "@/redux/hooks/hook";
-import { userSelector } from "@/redux/userSlice";
 import { InnerSection, MiniSection } from "@/styles/PageStyles/SectionStyles";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 const HouseDetail = () => {
-  const { user } = useAppSelector(userSelector);
   const router = useRouter();
   const id = router.query.id;
   useEffect(() => {
-    if (user === null) {
-      router.push(`/properties/${router.query.id}`);
-    }
+    console.log(router.query.id);
   }, []);
-
   return (
     <>
       <Head>
-        <title>Dashboard | Available Units</title>
+        <title>Properties | Details</title>
         <meta
           name="description"
           content="Rentease is a platform which makes renting and buying houses seamless"

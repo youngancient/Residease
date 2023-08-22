@@ -3,7 +3,7 @@ import { HouseCard } from "./HouseCard";
 import { HouseListCompStyles } from "@/styles/ComponentStyles/HouseCardStyles";
 import { IHouse } from "../../../types/House";
 
-interface IHouseList {
+export interface IHouseList {
   houses: IHouse[] | null;
 }
 export const HouseListComp: FunctionComponent<IHouseList> = ({ houses }) => {
