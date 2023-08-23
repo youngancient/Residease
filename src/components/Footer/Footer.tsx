@@ -16,7 +16,7 @@ export const Footer: FunctionComponent = () => {
           <div className="logo">
             <LogoIcon />
             <p>
-              Your Happiness, Our Mission! Renting Made Easy with Us. We're
+              Your Happiness, Our Mission! Renting Made Easy with Us. We &apos;re
               Revolutionizing Rental Experiences in the Nigerian Ecosystem,
               Transforming the Landscape of the Real Estate market.
             </p>

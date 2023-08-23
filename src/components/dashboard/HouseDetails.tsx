@@ -288,13 +288,17 @@ interface ISlideImage {
 }
 
 export const PhotoSlider: FunctionComponent<IPhotos> = ({ mainImage }) => {
-  const [slideImages, setSlideImages] = useState<ISlideImage[]>([
-    { src: `${mainImage}`, alt: "main", show: true },
-    { src: "/room1.jpg", alt: "first image", show: false },
-    { src: "/room2.jpg", alt: "second image", show: false },
-    { src: "/room3.jpg", alt: "third image", show: false },
-    { src: "/room4.jpg", alt: "fourth image", show: false },
-  ]);
+  const [slideImages, setSlideImages] = useState<ISlideImage[]>();
+  useEffect(()=>{
+    setSlideImages([
+      { src: "/house10.jpeg", alt: "main", show: true },
+      { src: "/room1.jpg", alt: "first image", show: false },
+      { src: "/room2.jpg", alt: "second image", show: false },
+      { src: "/room3.jpg", alt: "third image", show: false },
+      { src: "/room4.jpg", alt: "fourth image", show: false },
+    ]);
+  },[]);
+
   const [count, setCount] = useState<number>(0);
   const handleSlider =()=>{
     if(count === 4){
@@ -304,7 +308,7 @@ export const PhotoSlider: FunctionComponent<IPhotos> = ({ mainImage }) => {
     }
   }
   useEffect(()=>{
-    const newState = slideImages.map((ele,index)=>{
+    const newState = slideImages?.map((ele,index)=>{
       if(count === index){
         return {...ele,show : true}
       }else{
@@ -313,6 +317,7 @@ export const PhotoSlider: FunctionComponent<IPhotos> = ({ mainImage }) => {
     });
     setSlideImages(newState);
   },[count, slideImages]);
+
   return (
     <PhotoSliderStyles>
       <div className="control">
@@ -320,7 +325,7 @@ export const PhotoSlider: FunctionComponent<IPhotos> = ({ mainImage }) => {
           <GreaterThan />
         </SliderBtn>
       </div>
-      {slideImages.map((ele, index) => (
+      {slideImages?.map((ele, index) => (
         <SlideImage key={index} src={ele.src} show={ele.show} alt={ele.alt} />
       ))}
     </PhotoSliderStyles>
