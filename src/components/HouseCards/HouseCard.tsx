@@ -15,6 +15,13 @@ export const HouseCard: FunctionComponent<IHouse> = ({
   type
 }) => {
   const router = useRouter();
+  const checkDetails =()=>{
+    const path = "/dashboard/inspection"
+    router.push({
+      pathname : path,
+      query : {id: id}
+    },path);
+  }
   return (
     <HouseCardStyles>
       <div className="img">
@@ -66,7 +73,7 @@ export const HouseCard: FunctionComponent<IHouse> = ({
       </div>
       <button
         type="button"
-        onClick={() => router.push(`/dashboard/availableunits/${id}`)}
+        onClick={() => router.push(`/properties/${id}`)}
       >
         View Listing Details
       </button>

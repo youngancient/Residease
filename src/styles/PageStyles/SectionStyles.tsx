@@ -30,3 +30,34 @@ export const MiniSection = styled.section`
     padding: 1rem 6rem 1rem 6rem;
   }
 `;
+
+export const ContentSection = styled.div`
+  display: flex;
+  gap: 2.5rem;
+  .three-x{
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+  }
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+  @media (min-width: 767px) {
+    flex-direction: row;
+    .three-x {
+      width: 65%;
+    }
+    .three-y {
+      width: 35%;
+    }
+  }
+  @media (min-width: 998px) {
+    gap: 5rem;
+    .three-x {
+      width: 70%;
+    }
+    .three-y {
+      width: 30%;
+    }
+  }
+`;

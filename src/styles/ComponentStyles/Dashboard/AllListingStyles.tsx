@@ -38,6 +38,7 @@ export const AllListingStyles = styled.div`
 `;
 
 export const FilterStyle = styled.div`
+  position: relative;
   button {
     cursor: pointer;
     display: flex;
@@ -58,8 +59,12 @@ export const FilterStyle = styled.div`
   }
   .dropdown {
     position: absolute;
+    background: #fff;
     display: flex;
     flex-direction: column;
+    z-index: 5;
+    margin-top: 0.5rem;
+    left: 0.5rem;
   }
 `;
 

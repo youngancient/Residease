@@ -33,9 +33,9 @@ export const ListFavouriteStyles = styled.div`
   }
 `;
 
-export const FavouriteItemStyles = styled(motion.div).attrs(()=>({
-  variants : houseVariants,
-  initial : "initial",
+export const FavouriteItemStyles = styled(motion.div).attrs(() => ({
+  variants: houseVariants,
+  initial: "initial",
   whileInView: "final",
   viewport: { once: true },
 }))`
@@ -92,3 +92,4 @@ export const NextBtn = styled.button`
   display: flex;
   top: 0.5rem;
 `;
+

@@ -25,13 +25,13 @@ export const Footer: FunctionComponent = () => {
             <div className="one">
               <div className="head">Quick Links</div>
               <div className="footer-links">
-                <Link href="#">
+                <Link href="/aboutus">
                   <FooterLinkStyles>About Us</FooterLinkStyles>
                 </Link>
-                <Link href="#">
+                <Link href="/properties">
                   <FooterLinkStyles>Properties</FooterLinkStyles>
                 </Link>
-                <Link href="#">
+                <Link href="/">
                   <FooterLinkStyles>FAQs</FooterLinkStyles>
                 </Link>
               </div>
@@ -39,7 +39,7 @@ export const Footer: FunctionComponent = () => {
             <div className="one">
               <div className="head">Help</div>
               <div className="footer-links">
-                <Link href="#">
+                <Link href="/">
                   <FooterLinkStyles>Contact Us</FooterLinkStyles>
                 </Link>
                 <Link href="#">

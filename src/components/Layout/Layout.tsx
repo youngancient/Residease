@@ -16,12 +16,14 @@ const Layout: FunctionComponent<ILayout> = ({ children }) => {
   const { isNavOpen } = useAppSelector(dataSelector);
   const router = useRouter();
   const { user } = useAppSelector(userSelector);
-  
+
   return (
     <LayoutStyle $isNavOpen={isNavOpen}>
       {user === null ? <Header /> : <DashboardNav />}
       <main>{children}</main>
-      {user === null && <Footer />}
+      {user === null &&
+        router.pathname !== "/auth" &&
+        router.pathname !== "/auth/signup" && <Footer />}
     </LayoutStyle>
   );
 };

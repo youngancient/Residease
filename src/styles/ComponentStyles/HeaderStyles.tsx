@@ -127,6 +127,7 @@ export const LogoStyles = styled.div`
   font-size: 1.8rem;
   color: #004286;
   font-weight: 600;
+  cursor: pointer;
   strong {
     color: #f2960d;
     font-weight: 600;

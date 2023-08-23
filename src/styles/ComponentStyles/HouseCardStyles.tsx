@@ -40,7 +40,6 @@ export const HouseCardStyles = styled(motion.div).attrs(() => ({
   .two {
     display: flex;
     gap: 1rem;
-    flex-wrap: wrap;
   }
   .head {
     display: flex;
@@ -73,6 +72,7 @@ export const HouseCardStyles = styled(motion.div).attrs(() => ({
     font-style: normal;
     font-weight: 400;
     line-height: 150%; /* 1.125rem */
+    white-space: nowrap;
   }
   button {
     color: var(--gray-900, #0c1116);

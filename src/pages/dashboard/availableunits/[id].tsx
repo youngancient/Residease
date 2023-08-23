@@ -13,7 +13,7 @@ const HouseDetail = () => {
   const id = router.query.id as string;
   useEffect(() => {
     if (user === null) {
-      router.push(`/properties/${router.query.id}`);
+      router.push("/auth");
     }
   }, []);
 

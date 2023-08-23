@@ -11,7 +11,7 @@ const Inspection =() => {
   const router = useRouter();
   useEffect(() => {
     if (user === null) {
-      router.push("/");
+      router.push("/auth");
     }
   }, []);
 

@@ -1,5 +1,4 @@
-import { FunctionComponent } from "react";
-
+import { FunctionComponent,useEffect } from "react";
 import { MobileNavStyles } from "@/styles/ComponentStyles/mobileNavStyles";
 import Link from "next/link";
 import { CloseIcon, IClick, LogoIcon, Menu } from "../Icons/HeaderIcons";
@@ -27,6 +26,19 @@ const Links: ILink[] = [
 export const Header: FunctionComponent = () => {
   const router = useRouter();
   const { isNavOpen } = useAppSelector(dataSelector);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      // close mobile slidein if the route changes
+      dispatch(setIsNavOpen(false));
+    };
+    router.events.on("routeChangeStart", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeStart", handleRouteChange);
+    };
+  }, []);
+  
   return (
     <HeaderStyles>
       <LogoIcon />
