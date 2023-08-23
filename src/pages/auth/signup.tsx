@@ -16,7 +16,7 @@ const SignUp =() => {
     if (user) {
       router.push("/dashboard");
     }
-  }, []);
+  }, [router,user]);
   
   return (
     <>

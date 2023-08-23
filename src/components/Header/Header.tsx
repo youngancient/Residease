@@ -37,7 +37,7 @@ export const Header: FunctionComponent = () => {
     return () => {
       router.events.off("routeChangeStart", handleRouteChange);
     };
-  }, []);
+  }, [dispatch,router.events]);
   
   return (
     <HeaderStyles>

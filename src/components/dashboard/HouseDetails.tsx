@@ -312,7 +312,7 @@ export const PhotoSlider: FunctionComponent<IPhotos> = ({ mainImage }) => {
       }
     });
     setSlideImages(newState);
-  },[count]);
+  },[count, slideImages]);
   return (
     <PhotoSliderStyles>
       <div className="control">

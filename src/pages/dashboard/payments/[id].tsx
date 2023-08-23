@@ -17,7 +17,7 @@ const Inspection = () => {
     if (user === null) {
       router.push("/auth");
     }
-  }, []);
+  }, [router,user]);
 
   return (
     <>

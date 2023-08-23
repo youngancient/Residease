@@ -14,7 +14,7 @@ const Login = () => {
     if (user) {
       router.push("/dashboard");
     }
-  }, []);
+  }, [router,user]);
 
   return (
     <>
