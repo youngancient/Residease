@@ -13,8 +13,11 @@ import {
   heroPVariants,
   secH1Variants,
 } from "@/animations/homepage";
-import { useAppSelector } from "@/redux/hooks/hook";
-import { dataSelector } from "@/redux/dataSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks/hook";
+import { dataSelector,setQuery } from "@/redux/dataSlice";
+import { ChangeEvent, useState } from "react";
+
+
 
 export const Hero = () => {
   return (
@@ -55,6 +58,12 @@ export const Hero = () => {
 export const SearchComponent = () => {
   // work on search function here
   // this search leads them to the property page
+  const [query, setQuery] = useState();;
+  const dispatch = useAppDispatch();
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    // console.log(e.target.value);
+    // handle change
+  };
   return (
     <SearchStyles>
       <input
@@ -62,6 +71,7 @@ export const SearchComponent = () => {
         name="query"
         placeholder="Want to start your search?  Enter an address, neighbourhood, city or ZIP Code"
         id=""
+        onChange={handleChange}
       />
       <button type="submit">
         <p>Find Comfort</p>

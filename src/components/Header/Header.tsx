@@ -101,7 +101,7 @@ export const MobileNav: FunctionComponent = () => {
           ))}
         </div>
         <div className="reg">
-          <button type="button">Register</button>
+          <button type="button" onClick={() => router.push("/auth/signup")}>Register</button>
         </div>
       </div>
     </MobileNavStyles>

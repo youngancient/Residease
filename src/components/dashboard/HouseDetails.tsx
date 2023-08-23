@@ -22,13 +22,13 @@ import { BackIcon, Dollar, GreaterThan } from "../Icons/DashboardIcons";
 import { FunctionComponent, ReactNode, useEffect, useState } from "react";
 import { IClick } from "../Icons/HeaderIcons";
 import { useRouter } from "next/router";
-import { useAppSelector } from "@/redux/hooks/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks/hook";
 import { userSelector } from "@/redux/userSlice";
 import { LargeBtn } from "../Header/Header";
 import { ComingSoonShort } from "../Homepage/ComingSoon";
 import Image from "next/image";
 import { IconDicts } from "../../../constants/CourseDetail";
-import { dataSelector } from "@/redux/dataSlice";
+import { dataSelector, setSlideImages } from "@/redux/dataSlice";
 import { IHouse } from "../../../types/House";
 import { Empty } from "../HouseCards/HouseList";
 import { NextBtn } from "@/styles/ComponentStyles/Dashboard/FavoriteStyles";
@@ -42,12 +42,12 @@ export const HouseDetailComp = () => {
   const router = useRouter();
   const id = router.query.id as string;
   const [house, setHouse] = useState<IHouse | undefined>();
-  useEffect(()=>{
+  useEffect(() => {
     allHouses && setHouse(allHouses.find((ele) => ele.id === id));
-  },[id,allHouses]);
+  }, [id, allHouses]);
 
   const [details, setDetails] = useState<IDetails>();
-  useEffect(()=>{
+  useEffect(() => {
     setDetails({
       details: [
         { name: "Total Deal for house", id: "price", value: 1200000 },
@@ -60,13 +60,13 @@ export const HouseDetailComp = () => {
         },
         { name: "Unit Type", id: "type", value: `${house?.type}` },
       ],
-    })
-  },[house?.type]);
+    });
+  }, [house?.type]);
 
-  const goForInspection =()=>{
+  const goForInspection = () => {
     // const path = "/dashboard/inspection"
     router.push(`/dashboard/inspection/digital/${id}`);
-  }
+  };
 
   return (
     <MiniSection>
@@ -78,10 +78,7 @@ export const HouseDetailComp = () => {
           <>
             <div className="one">
               <LargeTextStyles>{house.name}</LargeTextStyles>
-              <LargeBtn
-                clickAction={goForInspection}
-                text="Book now"
-              />
+              <LargeBtn clickAction={goForInspection} text="Book now" />
             </div>
             <div className="two">
               <PhotoGrid mainImage={house.imgSrc} />
@@ -206,7 +203,11 @@ export const DetailComp: FunctionComponent<IDetail> = ({ id, name, value }) => {
       {IconDicts[id]}
       <div className="first">
         <p>{name}</p>
-        <span>{typeof value === "number" ? value.toLocaleString() :value.toString()}</span>
+        <span>
+          {typeof value === "number"
+            ? value.toLocaleString()
+            : value.toString()}
+        </span>
       </div>
     </DetailCompStyles>
   );
@@ -281,42 +282,53 @@ export const PhotoGrid: FunctionComponent<IPhotos> = ({ mainImage }) => {
   );
 };
 
-interface ISlideImage {
+export interface ISlideImage {
   src: string;
   alt: string;
   show: boolean;
 }
 
+// fix this slider!
+
 export const PhotoSlider: FunctionComponent<IPhotos> = ({ mainImage }) => {
-  const [slideImages, setSlideImages] = useState<ISlideImage[]>();
-  useEffect(()=>{
-    setSlideImages([
-      { src: "/house10.jpeg", alt: "main", show: true },
-      { src: "/room1.jpg", alt: "first image", show: false },
-      { src: "/room2.jpg", alt: "second image", show: false },
-      { src: "/room3.jpg", alt: "third image", show: false },
-      { src: "/room4.jpg", alt: "fourth image", show: false },
-    ]);
-  },[]);
+  // const [slideImages, setSlideImages] = useState<ISlideImage[]>();
+  const { slideImages } = useAppSelector(dataSelector);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(
+      setSlideImages([
+        { src: `${mainImage}`, alt: "main", show: true },
+        { src: "/room1.jpg", alt: "first image", show: false },
+        { src: "/room2.jpg", alt: "second image", show: false },
+        { src: "/room3.jpg", alt: "third image", show: false },
+        { src: "/room4.jpg", alt: "fourth image", show: false },
+      ])
+    );
+    console.log(slideImages);
+  }, []);
 
   const [count, setCount] = useState<number>(0);
-  const handleSlider =()=>{
-    if(count === 4){
+  const handleSlider = () => {
+    if (count === 4) {
       setCount(0);
-    }else{
-      setCount(count+1);
+    } else {
+      setCount(count + 1);
     }
-  }
-  useEffect(()=>{
-    const newState = slideImages?.map((ele,index)=>{
-      if(count === index){
-        return {...ele,show : true}
-      }else{
-        return {...ele,show : false}
-      }
-    });
-    setSlideImages(newState);
-  },[count, slideImages]);
+  };
+  useEffect(() => {
+    let newSlideImages = null;
+    if (slideImages) {
+      newSlideImages = slideImages.map((ele, index) => {
+        if (count === index) {
+          return { ...ele, show: true };
+        } else {
+          return { ...ele, show: false };
+        }
+      });
+      dispatch(setSlideImages(newSlideImages));
+    }
+  }, [count]);
 
   return (
     <PhotoSliderStyles>
