@@ -7,6 +7,8 @@ import { SearchIcon } from "../Icons/HeaderIcons";
 import { ChangeEvent, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hook";
 import { dataSelector, setFilterHouses, setQuery } from "@/redux/dataSlice";
+import { ComingSoonShort } from "../Homepage/ComingSoon";
+
 
 export const Filter = () => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
@@ -16,13 +18,11 @@ export const Filter = () => {
         <p>Filter by</p>
         <FilterIcon />
       </button>
-      {/* {showDropdown && (
+      {showDropdown && (
         <div className="dropdown">
-          <span>dropdown item</span>
-          <span>dropdown item</span>
-          <span>dropdown item</span>
+          <ComingSoonShort>Coming soon</ComingSoonShort>
         </div>
-      )} */}
+      )}
     </FilterStyle>
   );
 };
@@ -35,13 +35,11 @@ export const Sort = () => {
         <p>Sort by</p>
         <SortIcon />
       </button>
-      {/* {showDropdown && (
+      {showDropdown && (
         <div className="dropdown">
-          <span>dropdown item</span>
-          <span>dropdown item</span>
-          <span>dropdown item</span>
+          <ComingSoonShort>Coming soon</ComingSoonShort>
         </div>
-      )} */}
+      )}
     </FilterStyle>
   );
 };
@@ -88,3 +86,5 @@ export const SearchInput = () => {
     </SearchInputStyle>
   );
 };
+
+

@@ -16,22 +16,22 @@ export const Footer: FunctionComponent = () => {
           <div className="logo">
             <LogoIcon />
             <p>
-              We make you smile! Entrust your smile to us.We are a kinikan
-              kinikan of 5 teams solving a major problem in the Nigeria
-              Eco-system of bla bla bla bla.
+              Your Happiness, Our Mission! Renting Made Easy with Us. We &apos;re
+              Revolutionizing Rental Experiences in the Nigerian Ecosystem,
+              Transforming the Landscape of the Real Estate market.
             </p>
           </div>
           <div className="sec">
             <div className="one">
               <div className="head">Quick Links</div>
               <div className="footer-links">
-                <Link href="#">
+                <Link href="/aboutus">
                   <FooterLinkStyles>About Us</FooterLinkStyles>
                 </Link>
-                <Link href="#">
+                <Link href="/properties">
                   <FooterLinkStyles>Properties</FooterLinkStyles>
                 </Link>
-                <Link href="#">
+                <Link href="/">
                   <FooterLinkStyles>FAQs</FooterLinkStyles>
                 </Link>
               </div>
@@ -39,7 +39,7 @@ export const Footer: FunctionComponent = () => {
             <div className="one">
               <div className="head">Help</div>
               <div className="footer-links">
-                <Link href="#">
+                <Link href="/">
                   <FooterLinkStyles>Contact Us</FooterLinkStyles>
                 </Link>
                 <Link href="#">
@@ -52,15 +52,15 @@ export const Footer: FunctionComponent = () => {
         <div className="one">
           <div className="head">Follow Us On</div>
           <div className="social-links">
-              <Socials href="#">
-                <XIcon />
-              </Socials>
-              <Socials href="#">
-                <FB />
-              </Socials>
-              <Socials href="#">
-                <Insta />
-              </Socials>
+            <Socials href="#">
+              <XIcon />
+            </Socials>
+            <Socials href="#">
+              <FB />
+            </Socials>
+            <Socials href="#">
+              <Insta />
+            </Socials>
           </div>
         </div>
       </div>

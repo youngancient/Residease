@@ -1,4 +1,6 @@
 
+import { ComingSoon } from '@/components/Homepage/ComingSoon';
+import { PhysicalInspection } from '@/components/dashboard/inspection/physical';
 import { useAppSelector } from '@/redux/hooks/hook';
 import { userSelector } from '@/redux/userSlice';
 import Head from 'next/head'
@@ -11,19 +13,19 @@ const Inspection =() => {
   const router = useRouter();
   useEffect(() => {
     if (user === null) {
-      router.push("/");
+      router.push("/auth");
     }
   }, []);
 
   return (
     <>
       <Head>
-        <title>Dashboard | Inspection</title>
+        <title>Dashboard | Physical Inspection</title>
         <meta name="description" content="Rentease is a platform which makes renting and buying houses seamless" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        Inspection page
+        <PhysicalInspection />
       </main>
     </>
   )

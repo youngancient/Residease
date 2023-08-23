@@ -1,16 +1,18 @@
-import { HouseDetailComp } from "@/components/dashboard/HouseDetails";
-import { SimilarHouses } from "@/components/dashboard/SimilarHouses";
+import { ComingSoon } from "@/components/Homepage/ComingSoon";
+import { PhysicalInspection } from "@/components/dashboard/inspection/physical";
+import { PaymentForm } from "@/components/dashboard/payments/Payments";
 import { useAppSelector } from "@/redux/hooks/hook";
 import { userSelector } from "@/redux/userSlice";
-import { InnerSection, MiniSection } from "@/styles/PageStyles/SectionStyles";
+import { DarkContainerStyle } from "@/styles/ComponentStyles/AuthStyles/AuthStyles";
+import { PaymentBg } from "@/styles/ComponentStyles/Dashboard/Payments/Main";
 import Head from "next/head";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-const HouseDetail = () => {
+const Inspection = () => {
   const { user } = useAppSelector(userSelector);
   const router = useRouter();
-  const id = router.query.id as string;
   useEffect(() => {
     if (user === null) {
       router.push("/auth");
@@ -20,7 +22,7 @@ const HouseDetail = () => {
   return (
     <>
       <Head>
-        <title>Dashboard | Available Units</title>
+        <title>Dashboard | Payments</title>
         <meta
           name="description"
           content="Rentease is a platform which makes renting and buying houses seamless"
@@ -28,11 +30,12 @@ const HouseDetail = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        <HouseDetailComp />
-        { id && <SimilarHouses id={id} />}
+        <PaymentBg>
+          <PaymentForm />
+        </PaymentBg>
       </main>
     </>
   );
 };
 
-export default HouseDetail;
+export default Inspection;

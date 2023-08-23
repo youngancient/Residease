@@ -1,6 +1,8 @@
 import { dataSelector, setIsNavOpen } from "@/redux/dataSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hook";
+import { userSelector } from "@/redux/userSlice";
 import { LogoStyles, MenuStyle } from "@/styles/ComponentStyles/HeaderStyles";
+import { useRouter } from "next/router";
 import { FunctionComponent } from "react";
 
 export const Menu: FunctionComponent = () => {
@@ -11,75 +13,54 @@ export const Menu: FunctionComponent = () => {
   };
   return (
     <MenuStyle onClick={toggleMenu}>
-      {isNavOpen ? (
-        <svg
-          width="24"
-          height="18"
-          viewBox="0 0 24 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g id="Menu H">
-            <rect
-              id="Top"
-              x="2.80762"
-              y="16.7782"
-              width="24"
-              height="2"
-              rx="1"
-              transform="rotate(-45 2.80762 16.7782)"
-              fill="#272727"
-            />
-            <rect
-              id="Bottom"
-              x="4.22168"
-              y="-0.192383"
-              width="24"
-              height="2"
-              rx="1"
-              transform="rotate(45 4.22168 -0.192383)"
-              fill="#272727"
-            />
-          </g>
-        </svg>
-      ) : (
-        <svg
-          width="24"
-          height="18"
-          viewBox="0 0 24 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g id="Menu H">
-            <rect id="Top" width="24" height="2" rx="1" fill="#272727" />
-            <rect
-              id="Middle"
-              y="8"
-              width="24"
-              height="2"
-              rx="1"
-              fill="#272727"
-            />
-            <rect
-              id="Bottom"
-              y="16"
-              width="24"
-              height="2"
-              rx="1"
-              fill="#272727"
-            />
-          </g>
-        </svg>
-      )}
+      <svg
+        width="24"
+        height="18"
+        viewBox="0 0 24 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g id="Menu H">
+          <rect id="Top" width="24" height="2" rx="1" fill="#272727" />
+          <rect id="Middle" y="8" width="24" height="2" rx="1" fill="#272727" />
+          <rect
+            id="Bottom"
+            y="16"
+            width="24"
+            height="2"
+            rx="1"
+            fill="#272727"
+          />
+        </g>
+      </svg>
     </MenuStyle>
   );
 };
 
-export const LogoIcon =()=>{
-  return(
-    <LogoStyles>Resid<strong>ease</strong></LogoStyles>
-  )
-}
+export const LogoIcon = () => {
+  const router = useRouter();
+  const {user} = useAppSelector(userSelector);
+  const goHome =()=>{
+    if(user === null){
+      router.push("/");
+    }else{
+      router.push("/dashboard");
+    }
+  }
+  return (
+    <LogoStyles onClick={goHome}>
+      Resid<strong>ease</strong>
+    </LogoStyles>
+  );
+};
+
+export const OrdinaryLogoIcon = () => {
+  return (
+    <LogoStyles>
+      Resid<strong>ease</strong>
+    </LogoStyles>
+  );
+};
 export const NotificationIcon = () => {
   return (
     <svg
@@ -121,10 +102,10 @@ export const SearchIcon = () => {
 };
 
 export interface IClick {
-  clickAction : ()=> void;
+  clickAction: () => void;
 }
 
-export const CloseIcon:FunctionComponent<IClick> = ({clickAction}) => {
+export const CloseIcon: FunctionComponent<IClick> = ({ clickAction }) => {
   return (
     <svg
       width="24"
