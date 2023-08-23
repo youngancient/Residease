@@ -18,6 +18,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks/hook";
 import { dataSelector, setIsNavOpen } from "@/redux/dataSlice";
 import { AnimatePresence, motion } from "framer-motion";
 import { slidevariants } from "@/animations/homepage";
+import { userSelector } from "@/redux/userSlice";
 
 const Links: ILink[] = [
   { name: "Dashboard", href: "/dashboard" },
@@ -28,6 +29,8 @@ const Links: ILink[] = [
 export const DashboardNav: FunctionComponent = () => {
   const router = useRouter();
   const { isNavOpen } = useAppSelector(dataSelector);
+  const {user} = useAppSelector(userSelector);
+
   return (
     <DashboardNavStyles>
       <LogoIcon />
@@ -50,7 +53,7 @@ export const DashboardNav: FunctionComponent = () => {
             <SearchIcon />
           </button>
         </div>
-        <div className="avatar">J</div>
+        <div className="avatar">{user?.email[0].toUpperCase()}</div>
       </div>
       <Menu />
       <AnimatePresence>{isNavOpen && <DashboardMobileNav key="anime" />}</AnimatePresence>
@@ -61,6 +64,7 @@ export const DashboardNav: FunctionComponent = () => {
 export const DashboardMobileNav: FunctionComponent = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const {user} = useAppSelector(userSelector);
   return (
     <MobileNavStyles key="dashboard">
       <div
@@ -78,7 +82,7 @@ export const DashboardMobileNav: FunctionComponent = () => {
           <div className="x">
             <CloseIcon clickAction={() => dispatch(setIsNavOpen(false))} />
           </div>
-          <div className="avatar">J</div>
+          <div className="avatar">{user?.email[0].toUpperCase()}</div>
         </div>
         <div className="mobile-links">
           {Links.map((navlink, index) => (
@@ -94,7 +98,7 @@ export const DashboardMobileNav: FunctionComponent = () => {
           ))}
         </div>
         <div className="reg">
-          <button type="button">Cta btn</button>
+          <button type="button">Logout</button>
         </div>
       </motion.div>
     </MobileNavStyles>

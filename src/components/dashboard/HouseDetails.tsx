@@ -41,30 +41,31 @@ export const HouseDetailComp = () => {
   // when the user navigates by typing the url, it shows empty
   const router = useRouter();
   const id = router.query.id as string;
-  const [house, setHouse] = useState<IHouse | undefined>(
-    allHouses?.find((ele) => ele.id === id)
-  );
+  const [house, setHouse] = useState<IHouse | undefined>();
+  useEffect(()=>{
+    allHouses && setHouse(allHouses.find((ele) => ele.id === id));
+  },[id,allHouses]);
 
-  const [details, setDetails] = useState<IDetails>({
-    details: [
-      { name: "Total Deal for house", id: "price", value: 1200000 },
-      { name: "Contact details", id: "contact", value: "+234 419 8765 000" },
-      { name: "Managing agent", id: "agent", value: "Residease" },
-      {
-        name: "Amenities",
-        id: "amenities",
-        value: ["School", "Hospital", "Power supply"],
-      },
-      { name: "Unit Type", id: "type", value: `${house?.type}` },
-    ],
-  });
+  const [details, setDetails] = useState<IDetails>();
+  useEffect(()=>{
+    setDetails({
+      details: [
+        { name: "Total Deal for house", id: "price", value: 1200000 },
+        { name: "Contact details", id: "contact", value: "+234 419 8765 000" },
+        { name: "Managing agent", id: "agent", value: "Residease" },
+        {
+          name: "Amenities",
+          id: "amenities",
+          value: ["School", "Hospital", "Power supply"],
+        },
+        { name: "Unit Type", id: "type", value: `${house?.type}` },
+      ],
+    })
+  },[house?.type]);
 
   const goForInspection =()=>{
-    const path = "/dashboard/inspection"
-    router.push({
-      pathname : path,
-      query : {id: id}
-    },path);
+    // const path = "/dashboard/inspection"
+    router.push(`/dashboard/inspection/digital/${id}`);
   }
 
   return (
@@ -92,7 +93,7 @@ export const HouseDetailComp = () => {
                 <MapComponent />
               </div>
               <div className="three-y">
-                <Details details={details.details} />
+                <Details details={details?.details} />
               </div>
             </ContentSection>
           </>
@@ -118,11 +119,12 @@ export const BackBtn: FunctionComponent<IPath> = ({ path }) => {
 };
 
 export interface IStatus {
-  status: "Verified" | "Unverified";
+  status: "Verified" | "Unverified" | "In Progress";
 }
 export const Status: FunctionComponent<IStatus> = ({ status }) => {
   return <StatusStyles status={status}>{status}</StatusStyles>;
 };
+
 export const PropertyOverview = () => {
   return (
     <PropertyOverviewStyles>
@@ -147,15 +149,39 @@ export const PropertyOverview = () => {
   );
 };
 
+export const InspectionOverview = () => {
+  return (
+    <PropertyOverviewStyles>
+      <div className="flex">
+        <MediumTextStyles>Property overview</MediumTextStyles>
+        <Status status="In Progress" />
+      </div>
+      <div className="overview">
+        <p>
+          A beautiful suburban property investment within reach of the top
+          Boston universities and bountiful shopping opportunities. The house
+          was renovated by John Steeley of McNeely Peeley’s in South Philly.
+          Boasting eleventeen bedrooms, fourty bidets and a manscaping room this
+          house is set to generate huge interest from the financial capital
+          markets. Currently offered for joint investment on a pro rata
+          deriviatives equine distribution model through venture capital star
+          investments capital limited. Free viewings online or via wetransfer
+          download buckets. Contact managing agent for counselling sessions.
+        </p>
+      </div>
+    </PropertyOverviewStyles>
+  );
+};
+
 export interface IDetails {
-  details: IDetail[];
+  details: IDetail[] | undefined;
 }
 export const Details: FunctionComponent<IDetails> = ({ details }) => {
   return (
     <DetailsStyles>
       <MediumTextStyles>Details</MediumTextStyles>
       <div className="details-list">
-        {details.map((ele, index) => (
+        {details?.map((ele, index) => (
           <DetailComp
             id={ele.id}
             key={index}
@@ -260,6 +286,7 @@ interface ISlideImage {
   alt: string;
   show: boolean;
 }
+
 export const PhotoSlider: FunctionComponent<IPhotos> = ({ mainImage }) => {
   const [slideImages, setSlideImages] = useState<ISlideImage[]>([
     { src: `${mainImage}`, alt: "main", show: true },

@@ -53,7 +53,7 @@ export const Header: FunctionComponent = () => {
       </div>
       <div className="button">
         <LargeBtn
-          clickAction={() => console.log("clicked")}
+          clickAction={() => router.push("/auth/signup")}
           text="Register here"
         />
       </div>
@@ -65,7 +65,7 @@ export const Header: FunctionComponent = () => {
   );
 };
 
-interface ILargeBtn extends IClick {
+export interface ILargeBtn extends IClick {
   text: string;
 }
 export const LargeBtn: FunctionComponent<ILargeBtn> = ({

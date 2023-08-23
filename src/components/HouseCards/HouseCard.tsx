@@ -4,6 +4,8 @@ import { FunctionComponent } from "react";
 import { AreaIcon, BedroomIcon, LocationIcon } from "../Icons/HeroIcons";
 import { IHouse } from "../../../types/House";
 import { useRouter } from "next/router";
+import { useAppSelector } from "@/redux/hooks/hook";
+import { userSelector } from "@/redux/userSlice";
 
 export const HouseCard: FunctionComponent<IHouse> = ({
   name,
@@ -14,13 +16,14 @@ export const HouseCard: FunctionComponent<IHouse> = ({
   bedroomNumber,
   type
 }) => {
+  const {user} = useAppSelector(userSelector);
   const router = useRouter();
   const checkDetails =()=>{
-    const path = "/dashboard/inspection"
-    router.push({
-      pathname : path,
-      query : {id: id}
-    },path);
+    if(user){
+      router.push(`/dashboard/availableunits/${id}`);
+    }else{
+      router.push(`/properties/${id}`);
+    }
   }
   return (
     <HouseCardStyles>
@@ -73,7 +76,7 @@ export const HouseCard: FunctionComponent<IHouse> = ({
       </div>
       <button
         type="button"
-        onClick={() => router.push(`/properties/${id}`)}
+        onClick={checkDetails}
       >
         View Listing Details
       </button>

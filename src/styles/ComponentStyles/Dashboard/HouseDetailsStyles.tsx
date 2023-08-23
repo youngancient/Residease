@@ -75,6 +75,12 @@ export const StatusStyles = styled(ComingSoonShort)<IStatus>`
       color: var(--green-50, #f6fff0);
       background: #eee159;
     `}
+  ${(props) =>
+    props.status == "In Progress"&&
+    css`
+      color: var(--green-50, #f6fff0);
+      background: #eee159;
+    `}
 `;
 
 export const SubsectionStyles = styled.div`

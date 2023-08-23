@@ -26,14 +26,14 @@ export const Hero = () => {
             initial="initial"
             whileInView="final"
           >
-            “Let’s find a home
+            “Experience The Value
           </motion.h1>
           <motion.h1
             variants={secH1Variants}
             initial="initial"
             whileInView="final"
           >
-            that’s perfect for you.
+            Of Stress-Free Renting.
           </motion.h1>
         </div>
         <div className="hero-text">
@@ -42,9 +42,8 @@ export const Hero = () => {
             initial="initial"
             whileInView="final"
           >
-            Yes! you heard right Readiease is a platform that finds the best
-            suitable home stress free with a click. We make you smile! Entrust
-            your smile to us.
+            Say goodbye to endless searching, stressful Processes, and piles of
+            paperwork.
           </motion.p>
         </div>
       </div>
@@ -84,7 +83,7 @@ export const ListHouses = () => {
           your smile to us.
         </p>
       </div>
-      {allHouses !== null && <HouseListComp houses={allHouses.slice(0,6)} />}
+      {allHouses !== null && <HouseListComp houses={allHouses.slice(0, 6)} />}
     </ListHousesStyles>
   );
 };

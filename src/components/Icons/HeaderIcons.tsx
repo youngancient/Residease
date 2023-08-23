@@ -53,6 +53,14 @@ export const LogoIcon = () => {
     </LogoStyles>
   );
 };
+
+export const OrdinaryLogoIcon = () => {
+  return (
+    <LogoStyles>
+      Resid<strong>ease</strong>
+    </LogoStyles>
+  );
+};
 export const NotificationIcon = () => {
   return (
     <svg

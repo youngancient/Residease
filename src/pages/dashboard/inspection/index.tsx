@@ -1,4 +1,5 @@
 
+import { ComingSoon } from '@/components/Homepage/ComingSoon';
 import { useAppSelector } from '@/redux/hooks/hook';
 import { userSelector } from '@/redux/userSlice';
 import Head from 'next/head'
@@ -23,7 +24,7 @@ const Inspection =() => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        Inspection page
+        <ComingSoon />
       </main>
     </>
   )
