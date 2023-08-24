@@ -46,6 +46,8 @@ export const SlidingListHouses: FunctionComponent<IHouseList> = ({
             imgSrc={ele.imgSrc}
             bedroomNumber={ele.bedroomNumber}
             type={ele.type}
+            link={ele.link}
+            price={ele.price}
           />
         ))}
     </SlidingListHousesStyles>

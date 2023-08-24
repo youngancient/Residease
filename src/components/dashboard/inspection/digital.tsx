@@ -155,7 +155,11 @@ export const TransparentBtn: FunctionComponent<ILargeBtn> = ({
   );
 };
 
-export const WatchVideo:FunctionComponent<ISatisfied> = ({id}) => {
+
+interface IGetId{
+  id : string;
+}
+export const WatchVideo:FunctionComponent<IGetId> = ({id}) => {
   const { showVideoModal, allHouses } = useAppSelector(dataSelector);
   const dispatch = useAppDispatch();
   const house = allHouses?.find((ele) => ele.id === id);
@@ -189,12 +193,15 @@ export const WatchVideo:FunctionComponent<ISatisfied> = ({id}) => {
           clickAction={() => dispatch(toggleShowVideoModal(true))}
         />
       </div>
-      {showVideoModal && <VideoModal />}
+      {showVideoModal && house?.link && <VideoModal link={house?.link} />}
     </WatchVideoStyles>
   );
 };
 
-export const VideoModal = () => {
+interface IVideoModal{
+  link : string;
+}
+export const VideoModal:FunctionComponent<IVideoModal> = ({link}) => {
   const dispatch = useAppDispatch();
   const [isLoading,setIsLoading] = useState(true);
   return (
@@ -206,7 +213,7 @@ export const VideoModal = () => {
         </div>
         {isLoading && <ButtonLoader />}
         <iframe
-          src="https://skybox.blockadelabs.com/e/18d06139d5e20dd662b6c425af77cf9c"
+          src={link}
           width="500"
           height="500"                                          
           allow="fullscreen"
