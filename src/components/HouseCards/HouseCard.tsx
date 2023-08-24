@@ -1,4 +1,7 @@
-import { HouseCardStyles } from "@/styles/ComponentStyles/HouseCardStyles";
+import {
+  HouseCardStyles,
+  NormalHouseCardStyles,
+} from "@/styles/ComponentStyles/HouseCardStyles";
 import Image from "next/image";
 import { FunctionComponent } from "react";
 import { AreaIcon, BedroomIcon, LocationIcon } from "../Icons/HeroIcons";
@@ -14,17 +17,91 @@ export const HouseCard: FunctionComponent<IHouse> = ({
   area,
   location,
   bedroomNumber,
-  type
+  type,
 }) => {
-  const {user} = useAppSelector(userSelector);
+  const { user } = useAppSelector(userSelector);
   const router = useRouter();
-  const checkDetails =()=>{
-    if(user){
+  const checkDetails = () => {
+    if (user) {
       router.push(`/dashboard/availableunits/${id}`);
-    }else{
+    } else {
       router.push(`/properties/${id}`);
     }
-  }
+  };
+  return (
+    <NormalHouseCardStyles>
+      <div className="img">
+        <Image
+          src={imgSrc}
+          width={164}
+          height={120}
+          alt="house"
+          className="mobile"
+        />
+        <Image
+          src={imgSrc}
+          width={230}
+          height={150}
+          alt="house"
+          className="tab"
+        />
+        <Image
+          src={imgSrc}
+          width={340}
+          height={240}
+          alt="house"
+          className="desktop"
+        />
+      </div>
+      <div className="head">
+        <div className="headies">
+          <h4>{name}</h4>
+          <span>{type}</span>
+        </div>
+        <p>
+          A beautiful townhouse in the heart of Miami’s down town district. With{" "}
+          {bedroomNumber} bedrooms and a heated pool.
+        </p>
+      </div>
+      <div className="two">
+        <div className="x">
+          <LocationIcon />
+          <span>{location}</span>
+        </div>
+        <div className="x">
+          <BedroomIcon />
+          <span>{bedroomNumber} Bedroom</span>
+        </div>
+        <div className="x">
+          <AreaIcon />
+          <span>{area}</span>
+        </div>
+      </div>
+      <button type="button" onClick={checkDetails}>
+        View Listing Details
+      </button>
+    </NormalHouseCardStyles>
+  );
+};
+
+export const SliderHouseCard: FunctionComponent<IHouse> = ({
+  name,
+  id,
+  imgSrc,
+  area,
+  location,
+  bedroomNumber,
+  type,
+}) => {
+  const { user } = useAppSelector(userSelector);
+  const router = useRouter();
+  const checkDetails = () => {
+    if (user) {
+      router.push(`/dashboard/availableunits/${id}`);
+    } else {
+      router.push(`/properties/${id}`);
+    }
+  };
   return (
     <HouseCardStyles>
       <div className="img">
@@ -72,12 +149,9 @@ export const HouseCard: FunctionComponent<IHouse> = ({
         <div className="x">
           <AreaIcon />
           <span>{area}</span>
-        </div> 
+        </div>
       </div>
-      <button
-        type="button"
-        onClick={checkDetails}
-      >
+      <button type="button" onClick={checkDetails}>
         View Listing Details
       </button>
     </HouseCardStyles>

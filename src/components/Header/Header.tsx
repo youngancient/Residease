@@ -1,4 +1,4 @@
-import { FunctionComponent,useEffect } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { MobileNavStyles } from "@/styles/ComponentStyles/mobileNavStyles";
 import Link from "next/link";
 import { CloseIcon, IClick, LogoIcon, Menu } from "../Icons/HeaderIcons";
@@ -37,8 +37,8 @@ export const Header: FunctionComponent = () => {
     return () => {
       router.events.off("routeChangeStart", handleRouteChange);
     };
-  }, [dispatch,router.events]);
-  
+  }, [dispatch, router.events]);
+
   return (
     <HeaderStyles>
       <LogoIcon />
@@ -67,12 +67,20 @@ export const Header: FunctionComponent = () => {
 
 export interface ILargeBtn extends IClick {
   text: string;
+  bgColor?: string;
+  color?: string;
 }
 export const LargeBtn: FunctionComponent<ILargeBtn> = ({
   text,
+  bgColor,
+  color,
   clickAction,
 }) => {
-  return <LargeBtnStyles onClick={clickAction}>{text}</LargeBtnStyles>;
+  return (
+    <LargeBtnStyles onClick={clickAction} bgColor={bgColor} color={color}>
+      {text}
+    </LargeBtnStyles>
+  );
 };
 
 // issue
@@ -101,7 +109,9 @@ export const MobileNav: FunctionComponent = () => {
           ))}
         </div>
         <div className="reg">
-          <button type="button">Register</button>
+          <button type="button" onClick={() => router.push("/auth/signup")}>
+            Register
+          </button>
         </div>
       </div>
     </MobileNavStyles>

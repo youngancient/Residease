@@ -13,7 +13,7 @@ const Dashboard =() => {
     if (user === null) {
       router.push("/auth");
     }
-  }, []);
+  }, [router,user]);
   return (
     <>
       <Head>

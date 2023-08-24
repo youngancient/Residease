@@ -26,6 +26,8 @@ export const HouseListComp: FunctionComponent<IHouseList> = ({ houses }) => {
             imgSrc={ele.imgSrc}
             bedroomNumber={ele.bedroomNumber}
             type={ele.type}
+            link={ele.link}
+            price={ele.price}
           />
         ))}
       {houses?.length == 0 && query && <Empty msg={`No match for '${query}'`} />}

@@ -26,7 +26,11 @@ export const MenuStyle = styled.div`
   }
 `;
 
-export const LargeBtnStyles = styled.button`
+interface ILargeBtnStyles{
+  bgColor ?: string;
+  color ?: string;
+}
+export const LargeBtnStyles = styled.button<ILargeBtnStyles>`
   display: flex;
   width: 14.375rem;
   height: 4rem;
@@ -36,7 +40,7 @@ export const LargeBtnStyles = styled.button`
   gap: 0.625rem;
   flex-shrink: 0;
   border-radius: 0.9375rem;
-  background: var(--primary-color, #000);
+  background: #006BB9;
   color: var(--white, #fff);
   font-size: 1rem;
   font-style: normal;
@@ -44,7 +48,12 @@ export const LargeBtnStyles = styled.button`
   line-height: 100%; /* 1rem */
   letter-spacing: 0.02rem;
   whitespace: nowrap;
-
+  ${props => props.bgColor && css`
+    background: ${props.bgColor};
+  `}
+  ${props => props.color && css`
+    color: ${props.color};
+  `}
   @media (max-width: 998px) {
     width: 10rem;
   }

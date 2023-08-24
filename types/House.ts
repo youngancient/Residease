@@ -7,4 +7,6 @@ export interface IHouse{
     imgSrc : string;
     bedroomNumber : number;
     type : 'Rent' | 'Sale';
+    price : number;
+    link : string;
 }

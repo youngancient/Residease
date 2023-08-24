@@ -72,7 +72,7 @@ export const SearchStyles = styled.div`
     flex-shrink: 0;
     color: var(--white, #fff);
     border-radius: 0.9375rem;
-    background: var(--primary-color, #000);
+    background: #006BB9;
     font-size: 1rem;
     font-style: normal;
     font-weight: 700;

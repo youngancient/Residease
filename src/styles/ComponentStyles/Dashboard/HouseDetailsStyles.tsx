@@ -76,9 +76,9 @@ export const StatusStyles = styled(ComingSoonShort)<IStatus>`
       background: #eee159;
     `}
   ${(props) =>
-    props.status == "In Progress"&&
+    props.status == "In Progress" &&
     css`
-      color: var(--green-50, #f6fff0);
+      color: var(--primary-color, #000);
       background: #eee159;
     `}
 `;
@@ -170,7 +170,7 @@ export const PhotoGridStyles = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
-  img{
+  img {
     border-radius: 0.75rem;
   }
   .one img {
@@ -223,4 +223,40 @@ export const SlideImageStyles = styled.div<ISliderImageStyle>`
 
 export const SliderBtn = styled(NextBtn)`
   top: 50%;
+`;
+
+export const ActionBtnContainer = styled.div`
+  display: flex;
+  gap: 2rem;
+  .first,
+  .sec {
+    width: 50%;
+  }
+  .first {
+    background: #ecedf7;
+    color: var(--primary-color, #000);
+  }
+  .sec {
+    background: var(--complimentary, #004286);
+    color: var(--white, #fff);
+  }
+  button {
+    width: 100%;
+    height: 4rem;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; /* 1rem */
+    letter-spacing: 0.02rem;
+    padding: 0.625rem;
+    border-radius: 0.9375rem;
+  }
+  @media (max-width: 500px) {
+    flex-direction: column;
+    gap: 1.5rem;
+    .first,
+    .sec {
+      width: 100%;
+    }
+  }
 `;

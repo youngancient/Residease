@@ -40,6 +40,7 @@ export const HouseCardStyles = styled(motion.div).attrs(() => ({
   .two {
     display: flex;
     gap: 1rem;
+    // flex-wrap: wrap;
   }
   .head {
     display: flex;
@@ -50,6 +51,7 @@ export const HouseCardStyles = styled(motion.div).attrs(() => ({
     display: flex;
     justify-content: space-between;
     align-items: center;
+    // flex-wrap: wrap;
   }
   .headies span {
     color: var(--complimentary, #004286);
@@ -122,7 +124,17 @@ export const HouseCardStyles = styled(motion.div).attrs(() => ({
     }
   }
 `;
-
+export const NormalHouseCardStyles = styled(HouseCardStyles)`
+  .headies, .two{
+    flex-wrap: wrap;
+  }
+ @media screen and (min-width: 767px) and (max-width: 998px){
+  button{
+    white-space: wrap;
+    padding: 1.5rem;
+  }
+ }
+`
 export const HouseListCompStyles = styled.div`
   display: flex;
   flex-direction: column;

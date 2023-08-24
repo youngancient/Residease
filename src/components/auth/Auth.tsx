@@ -50,7 +50,7 @@ export const LoginForm: FunctionComponent = () => {
         router.push("/dashboard");
         reset();
       } else {
-        setUserError("Wrong Login Creditials.");
+        setUserError("Wrong Login Creditials!");
         setUserLoading(false);
       }
     }, 2000);
@@ -154,14 +154,14 @@ export const SignupForm: FunctionComponent = () => {
     setTimeout(() => {
       if (data.password !== data.password2) {
         console.log(data);
-        setUserError("Passwords do not match");
+        setUserError("Passwords do not match!");
         setUserLoading(false);
       } else {
         const findUser = allUsers.find(
           (ele) => ele.email === data.email
         );
         if (findUser) {
-          setUserError("This Email has been used already.");
+          setUserError("This Email has been used already!");
           setUserLoading(false);
         } else {
           setUserError(null);

@@ -8,14 +8,14 @@ import { InnerSection } from "@/styles/PageStyles/SectionStyles";
 import { FunctionComponent } from "react";
 import { IHouse } from "../../../types/House";
 import { IHouseList } from "../HouseCards/HouseList";
-import { HouseCard } from "../HouseCards/HouseCard";
+import { HouseCard, SliderHouseCard } from "../HouseCards/HouseCard";
 
 interface ISimilarHouses{
     id : string;
 }
 export const SimilarHouses:FunctionComponent<ISimilarHouses> = ({id}) => {
   const { allHouses } = useAppSelector(dataSelector);
-  const houses = allHouses?.slice(0, 5);
+  const houses = allHouses?.slice(0, 6).filter(ele => ele.id !== id);
   return (
     <>
       {houses && houses !== null && (
@@ -37,7 +37,7 @@ export const SlidingListHouses: FunctionComponent<IHouseList> = ({
     <SlidingListHousesStyles>
       {houses !== null &&
         houses.map((ele, index) => (
-          <HouseCard
+          <SliderHouseCard
             key={index}
             name={ele.name}
             area={ele.area}
@@ -46,6 +46,8 @@ export const SlidingListHouses: FunctionComponent<IHouseList> = ({
             imgSrc={ele.imgSrc}
             bedroomNumber={ele.bedroomNumber}
             type={ele.type}
+            link={ele.link}
+            price={ele.price}
           />
         ))}
     </SlidingListHousesStyles>

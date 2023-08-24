@@ -3,70 +3,67 @@ import { useAppSelector } from "@/redux/hooks/hook";
 import { userSelector } from "@/redux/userSlice";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { BackBtn, Details, IDetails, InspectionOverview, MapComponent, PhotoGrid, PhotoSlider, PropertyOverview } from "../HouseDetails";
-import { ContentSection, MiniSection } from "@/styles/PageStyles/SectionStyles";
-import { HouseDetailsStyles, LargeTextStyles, MediumTextStyles } from "@/styles/ComponentStyles/Dashboard/HouseDetailsStyles";
+import {
+  BackBtn,
+  Details,
+  IDetails,
+  InspectionOverview,
+  MapComponent,
+  PhotoGrid,
+  PhotoSlider,
+  PropertyOverview,
+} from "../HouseDetails";
+import { ContentSection, MiniSection, PadBottomStyles } from "@/styles/PageStyles/SectionStyles";
+import {
+  HouseDetailsStyles,
+  LargeTextStyles,
+  MediumTextStyles,
+} from "@/styles/ComponentStyles/Dashboard/HouseDetailsStyles";
 import { LargeBtn } from "@/components/Header/Header";
 import { Empty } from "@/components/HouseCards/HouseList";
 import { IHouse } from "../../../../types/House";
-import { PadBottomStyles } from "@/styles/ComponentStyles/Dashboard/Inspection/DigitalStyles";
 import { CheckAvailabilityStyles } from "@/styles/ComponentStyles/Dashboard/Inspection/Physical";
-import { ComingSoonShort } from "@/components/Homepage/ComingSoon";
-
+import { ComingSoonSection, ComingSoonShort } from "@/components/Homepage/ComingSoon";
 
 export const PhysicalInspection = () => {
-    const { user } = useAppSelector(userSelector);
-    const { allHouses } = useAppSelector(dataSelector);
-  
-    // There's a bug here.
-    // when the user navigates by typing the url, it shows empty
-    const router = useRouter();
-    const id = router.query.id as string;
-    const [house, setHouse] = useState<IHouse | undefined>();
-    useEffect(()=>{
-      allHouses && setHouse(allHouses.find((ele) => ele.id === id));
-    },[id,allHouses]);
-  
-    const [details, setDetails] = useState<IDetails>();
-    useEffect(()=>{
-      setDetails({
-        details: [
-          { name: "Total Deal for house", id: "price", value: 1200000 },
-          { name: "Contact details", id: "contact", value: "+234 419 8765 000" },
-          { name: "Managing agent", id: "agent", value: "Residease" },
-          {
-            name: "Amenities",
-            id: "amenities",
-            value: ["School", "Hospital", "Power supply"],
-          },
-          { name: "Unit Type", id: "type", value: `${house?.type}` },
-        ],
-      })
-    },[house?.type]);
-  
-    // const goForInspection =()=>{
-    //   const path = "/dashboard/inspection"
-    //   router.push({
-    //     pathname : path,
-    //     query : {id: id}
-    //   },path);
-    // }
-  
-    return (
-      <MiniSection>
-        <PadBottomStyles>
+  const { user } = useAppSelector(userSelector);
+  const { allHouses } = useAppSelector(dataSelector);
+
+  // There's a bug here.
+  // when the user navigates by typing the url, it shows empty
+  const router = useRouter();
+  const id = router.query.id as string;
+  const [house, setHouse] = useState<IHouse | undefined>();
+  useEffect(() => {
+    allHouses && setHouse(allHouses.find((ele) => ele.id === id));
+  }, [id, allHouses]);
+
+  const [details, setDetails] = useState<IDetails>();
+  useEffect(() => {
+    setDetails({
+      details: [
+        { name: "Total Deal for house", id: "price", value: `${house?.price.toLocaleString()}` },
+        { name: "Contact details", id: "contact", value: "+234 419 8765 000" },
+        { name: "Managing agent", id: "agent", value: "Residease" },
+        {
+          name: "Amenities",
+          id: "amenities",
+          value: ["School", "Hospital", "Power supply"],
+        },
+        { name: "Unit Type", id: "type", value: `${house?.type}` },
+      ],
+    });
+  }, [house?.type,house?.price]);
+
+  return (
+    <MiniSection>
+      <PadBottomStyles>
         <HouseDetailsStyles>
-          <BackBtn
-            path={`/dashboard/inspection/digital/${id}`}
-          />
+          <BackBtn path={`/dashboard/inspection/digital/${id}`} />
           {house ? (
             <>
               <div className="one">
                 <LargeTextStyles>{house.name}</LargeTextStyles>
-                <LargeBtn
-                  clickAction={() => router.push(`/dashboard/payments/${id}`)}
-                  text="Rent now"
-                />
               </div>
               <div className="two">
                 <PhotoGrid mainImage={house.imgSrc} />
@@ -86,21 +83,22 @@ export const PhysicalInspection = () => {
             <Empty msg="This Page is under construction" />
           )}
         </HouseDetailsStyles>
-        </PadBottomStyles>
-      </MiniSection>
-    );
-  };
+      </PadBottomStyles>
+    </MiniSection>
+  );
+};
 
-export const CheckAvailability =()=>{
-  return(
+export const CheckAvailability = () => {
+  return (
     <CheckAvailabilityStyles>
       <div className="flex">
         <MediumTextStyles>Check Availability</MediumTextStyles>
+        {/* <ComingSoonShort>Coming Soon</ComingSoonShort> */}
+      </div>
+      <ComingSoonSection>
+        <p>This section is under construction</p>
         <ComingSoonShort>Coming Soon</ComingSoonShort>
-      </div>
-      <div className="blu">
-        This section is under construction
-      </div>
+      </ComingSoonSection>
     </CheckAvailabilityStyles>
-  )
-}
+  );
+};
