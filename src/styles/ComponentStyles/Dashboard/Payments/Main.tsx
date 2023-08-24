@@ -7,21 +7,18 @@ export const PaymentBg = styled(DarkContainerStyle)`
   border: 2px solid #fff;
   margin-top: 3rem;
   margin-bottom: 3rem;
+  height: fit-content;
   min-height: 180vh;
-  @media (max-width: 500px){
-    
+  @media (max-width: 500px) {
+    min-height: 120vh;
   }
 `;
 
-export const PaymentFormStyles = styled(motion.div).attrs(() => ({
-  variants: formVariants,
-  initial: "initial",
-  animate: "final",
-  exit: "exit",
-}))`
+export const PaymentFormStyles = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  min-height: 50vh;
   .one {
     display: flex;
     justify-content: center;
@@ -122,8 +119,8 @@ export const PaymentOptionsStyles = styled.div`
   svg {
     scale: 1.2;
   }
-  @media (max-width: 767px){
-    .hide{
+  @media (max-width: 767px) {
+    .hide {
       display: none;
     }
   }
@@ -176,5 +173,65 @@ export const InspectionPassStyles = styled.div`
     font-style: normal;
     font-weight: 100;
     line-height: 150%; /* 0.9375rem */
+  }
+`;
+
+export const LoadingScreenStyle = styled(motion.div).attrs(() => ({
+  variants: formVariants,
+  initial: "initial",
+  animate: "final",
+  exit: "exit",
+}))`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  p {
+    color: #4d565f;
+    text-align: center;
+    font-family: Public Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 1.5rem */
+  }
+`;
+
+export const PaymentSuccessStyle = styled(motion.div).attrs(() => ({
+  variants: formVariants,
+  initial: "initial",
+  animate: "final",
+  exit: "exit",
+}))`
+  h4 {
+    color: var(--gray-800, #242d35);
+    font-family: Public Sans;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 3rem */
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    p {
+      color: #4d565f;
+      text-align: center;
+      font-family: Public Sans;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%; /* 1.5rem */
+    }
+  }
+  gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  .btn button {
+    margin: 0 auto;
   }
 `;
