@@ -2,7 +2,7 @@ import { HouseDetailComp } from "@/components/dashboard/HouseDetails";
 import { SimilarHouses } from "@/components/dashboard/SimilarHouses";
 import { useAppSelector } from "@/redux/hooks/hook";
 import { userSelector } from "@/redux/userSlice";
-import { InnerSection, MiniSection } from "@/styles/PageStyles/SectionStyles";
+import { InnerSection, MiniSection, PadBottomStyles } from "@/styles/PageStyles/SectionStyles";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -28,8 +28,10 @@ const HouseDetail = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
+        <PadBottomStyles>
         <HouseDetailComp />
         { id && <SimilarHouses id={id} />}
+        </PadBottomStyles>
       </main>
     </>
   );

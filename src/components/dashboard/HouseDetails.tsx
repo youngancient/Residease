@@ -1,4 +1,5 @@
 import {
+  ActionBtnContainer,
   BackBtnStyles,
   DetailCompStyles,
   DetailsStyles,
@@ -31,7 +32,10 @@ import { IconDicts } from "../../../constants/CourseDetail";
 import { dataSelector, setSlideImages } from "@/redux/dataSlice";
 import { IHouse } from "../../../types/House";
 import { Empty } from "../HouseCards/HouseList";
-import { NextBtn } from "@/styles/ComponentStyles/Dashboard/FavoriteStyles";
+
+
+
+
 
 export const HouseDetailComp = () => {
   const { user } = useAppSelector(userSelector);
@@ -50,22 +54,34 @@ export const HouseDetailComp = () => {
   useEffect(() => {
     setDetails({
       details: [
-        { name: "Total Deal for house", id: "price", value: 1200000 },
+        { name: "Total Deal for house", id: "price", value: `${house?.price.toLocaleString()}` },
         { name: "Contact details", id: "contact", value: "+234 419 8765 000" },
         { name: "Managing agent", id: "agent", value: "Residease" },
         {
           name: "Amenities",
           id: "amenities",
-          value: ["School", "Hospital", "Power supply"],
+          value: ["Clean Water", "Heater", "Power supply"],
         },
         { name: "Unit Type", id: "type", value: `${house?.type}` },
       ],
     });
-  }, [house?.type]);
+  }, [house?.type,house?.price]);
 
   const goForInspection = () => {
     // const path = "/dashboard/inspection"
-    router.push(`/dashboard/inspection/digital/${id}`);
+    if (user) {
+      router.push(`/dashboard/inspection/digital/${id}`);
+    } else {
+      router.push(`/auth`);
+    }
+  };
+  const escrowPayment = () => {
+    // const path = "/dashboard/inspection"
+    if (user) {
+      router.push(`/dashboard/payments/${id}`);
+    } else {
+      router.push(`/auth`);
+    }
   };
 
   return (
@@ -78,7 +94,6 @@ export const HouseDetailComp = () => {
           <>
             <div className="one">
               <LargeTextStyles>{house.name}</LargeTextStyles>
-              <LargeBtn clickAction={goForInspection} text="Book now" />
             </div>
             <div className="two">
               <PhotoGrid mainImage={house.imgSrc} />
@@ -93,6 +108,14 @@ export const HouseDetailComp = () => {
                 <Details details={details?.details} />
               </div>
             </ContentSection>
+            <ActionBtnContainer>
+              <button type="button" className="first" onClick={goForInspection}>
+                Inspect now
+              </button>
+              <button type="button" className="sec" onClick={escrowPayment}>
+                Rent now
+              </button>
+            </ActionBtnContainer>
           </>
         ) : (
           <Empty msg="This Page is under construction" />
@@ -305,7 +328,6 @@ export const PhotoSlider: FunctionComponent<IPhotos> = ({ mainImage }) => {
         { src: "/room4.jpg", alt: "fourth image", show: false },
       ])
     );
-    console.log(slideImages);
   }, []);
 
   const [count, setCount] = useState<number>(0);

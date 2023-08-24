@@ -61,3 +61,13 @@ export const ContentSection = styled.div`
     }
   }
 `;
+
+export const PadBottomStyles = styled.div`
+  padding-bottom: 4.5rem;
+  @media (max-width: 500px) {
+    padding-bottom: 4rem;
+  }
+  @media (max-width: 500px) {
+    padding-bottom: 5rem;
+  }
+`;

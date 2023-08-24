@@ -11,6 +11,7 @@ export interface InitialState {
   isNavOpen: boolean;
   query: string | null;
   slideImages: ISlideImage[] | null;
+  showVideoModal: boolean;
 }
 
 const initialState: InitialState = {
@@ -19,6 +20,7 @@ const initialState: InitialState = {
   query: null,
   filterHouses: Houses,
   slideImages: null,
+  showVideoModal: false,
 };
 
 export const dataSlice = createSlice({
@@ -34,15 +36,23 @@ export const dataSlice = createSlice({
     setFilterHouses: (state, { payload }) => {
       state.filterHouses = payload;
     },
-    setSlideImages: (state, action:PayloadAction<ISlideImage[] | null>) => {
+    setSlideImages: (state, action: PayloadAction<ISlideImage[] | null>) => {
       state.slideImages = action.payload;
+    },
+    toggleShowVideoModal: (state, action: PayloadAction<boolean>) => {
+      state.showVideoModal = action.payload;
     },
   },
 });
 
 export const dataSelector = (state: RootState) => state.data;
 
-export const { setIsNavOpen, setQuery, setFilterHouses, setSlideImages } =
-  dataSlice.actions;
+export const {
+  setIsNavOpen,
+  setQuery,
+  setFilterHouses,
+  setSlideImages,
+  toggleShowVideoModal,
+} = dataSlice.actions;
 
 export default dataSlice.reducer;

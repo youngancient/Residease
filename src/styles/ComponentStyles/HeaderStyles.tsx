@@ -36,7 +36,7 @@ export const LargeBtnStyles = styled.button`
   gap: 0.625rem;
   flex-shrink: 0;
   border-radius: 0.9375rem;
-  background: var(--primary-color, #000);
+  background: #006BB9;
   color: var(--white, #fff);
   font-size: 1rem;
   font-style: normal;

@@ -75,3 +75,17 @@ export const ComingSoonShort = styled.div`
   font-weight: 500;
   line-height: 100%; /* 0.75rem */
 `;
+
+export const ComingSoonSection = styled.div`
+  border-radius: 1.25rem;
+  background: #ecedf7;
+  height: 250px;
+  width: 100%;
+  display :flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 1.5rem;
+  text-align: center;
+`;
